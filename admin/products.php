@@ -1,39 +1,20 @@
 <?php
-$title='Produk';require '_head.php';
-$msg='';
+$title='Produk';require '_head.php';$msg='';
 try{
-if(isset($_GET['delete'])){
- $id=(int)$_GET['delete'];
- $pdo->prepare('DELETE FROM product_images WHERE product_id=?')->execute([$id]);
- $pdo->prepare('DELETE FROM products WHERE id=?')->execute([$id]);
- header('Location: products.php');exit;
-}
+if(isset($_GET['delete'])){$id=(int)$_GET['delete'];$pdo->prepare('DELETE FROM product_images WHERE product_id=?')->execute([$id]);$pdo->prepare('DELETE FROM products WHERE id=?')->execute([$id]);header('Location: products.php');exit;}
 if($_SERVER['REQUEST_METHOD']==='POST'){
- $files=$_FILES['images']??null;
- $uploaded=[];
- if($files && isset($files['name']) && is_array($files['name'])){
-  foreach($files['name'] as $i=>$name){
-   if($name==='')continue;
-   $file=['name'=>$files['name'][$i],'type'=>$files['type'][$i],'tmp_name'=>$files['tmp_name'][$i],'error'=>$files['error'][$i],'size'=>$files['size'][$i]];
-   $uploaded[]=upload_image($file,'products');
-  }
- }
- if(!$uploaded)throw new RuntimeException('Pilih minimal 1 foto produk.');
- $pdo->beginTransaction();
- $pdo->prepare('INSERT INTO products(category_id,name,description,price,image,featured,active) VALUES(?,?,?,?,?,?,?)')->execute([(int)$_POST['category_id'],trim($_POST['name']),trim($_POST['description']),trim($_POST['price']),$uploaded[0],isset($_POST['featured'])?1:0,1]);
- $productId=(int)$pdo->lastInsertId();
- $st=$pdo->prepare('INSERT INTO product_images(product_id,image,sort_order) VALUES(?,?,?)');
- foreach($uploaded as $i=>$path)$st->execute([$productId,$path,$i]);
- $pdo->commit();
- header('Location: products.php?saved=1');exit;
-}
-}catch(Throwable $e){if($pdo->inTransaction())$pdo->rollBack();$msg=$e->getMessage();}
-$cats=$pdo->query('SELECT * FROM categories ORDER BY name')->fetchAll();$rows=$pdo->query('SELECT p.*,c.name category_name,(SELECT COUNT(*) FROM product_images pi WHERE pi.product_id=p.id) photo_count FROM products p LEFT JOIN categories c ON c.id=p.category_id ORDER BY p.id DESC')->fetchAll();
-?><h1>Produk</h1><?php if($msg):?><div class="alert"><?=e($msg)?></div><?php endif;?>
-<div class="panel"><form method="post" enctype="multipart/form-data">
-<input name="name" placeholder="Nama produk" required>
-<select name="category_id" required><?php foreach($cats as $c):?><option value="<?=$c['id']?>"><?=e($c['name'])?></option><?php endforeach;?></select>
-<textarea name="description" placeholder="Keterangan (opsional)"></textarea><input name="price" placeholder="Harga (opsional)">
-<label class="upload-label">Foto produk — bisa pilih beberapa sekaligus<input type="file" name="images[]" accept="image/jpeg,image/png,image/webp" multiple required><small>JPG, PNG, WebP • maksimal 5 MB per foto • foto pertama menjadi foto utama</small></label>
-<label><input type="checkbox" name="featured"> Produk unggulan</label><br><button>Simpan Produk</button></form></div>
-<div class="panel"><table><?php foreach($rows as $p):?><tr><td><?php if($p['image']):?><img class="thumb" src="<?=e($p['image'])?>" alt=""><?php endif;?></td><td><?=e($p['name'])?></td><td><?=e($p['price'])?></td><td><?=$p['photo_count']?> foto</td><td><a href="/produk-detail.php?id=<?=$p['id']?>">Lihat</a> · <a href="?delete=<?=$p['id']?>" onclick="return confirm('Hapus produk dan semua fotonya?')">Hapus</a></td></tr><?php endforeach;?></table></div><?php require '_foot.php';?>
+$files=$_FILES['images']??null;$uploaded=[];
+if($files&&isset($files['name'])&&is_array($files['name']))foreach($files['name'] as $i=>$name){if($name==='')continue;$file=['name'=>$files['name'][$i],'type'=>$files['type'][$i],'tmp_name'=>$files['tmp_name'][$i],'error'=>$files['error'][$i],'size'=>$files['size'][$i]];$uploaded[]=upload_image($file,'products');}
+if(!$uploaded)throw new RuntimeException('Pilih minimal 1 foto produk.');
+$pdo->beginTransaction();$pdo->prepare('INSERT INTO products(category_id,name,description,price,image,featured,active) VALUES(?,?,?,?,?,?,?)')->execute([(int)$_POST['category_id'],trim($_POST['name']),trim($_POST['description']),trim($_POST['price']),$uploaded[0],isset($_POST['featured'])?1:0,1]);$productId=(int)$pdo->lastInsertId();$st=$pdo->prepare('INSERT INTO product_images(product_id,image,sort_order) VALUES(?,?,?)');foreach($uploaded as $i=>$path)$st->execute([$productId,$path,$i]);$pdo->commit();header('Location: products.php?saved=1');exit;
+}}catch(Throwable $e){if($pdo->inTransaction())$pdo->rollBack();$msg=$e->getMessage();}
+$cats=$pdo->query('SELECT * FROM categories ORDER BY name')->fetchAll();
+$q=trim($_GET['q']??'');$cat=(int)($_GET['category']??0);$page=max(1,(int)($_GET['page']??1));$perPage=15;$where=[];$params=[];if($cat){$where[]='p.category_id=?';$params[]=$cat;}if($q!==''){$where[]='(p.name LIKE ? OR p.description LIKE ?)';$params[]='%'.$q.'%';$params[]='%'.$q.'%';}$ws=$where?' WHERE '.implode(' AND ',$where):'';$cs=$pdo->prepare('SELECT COUNT(*) FROM products p'.$ws);$cs->execute($params);$total=(int)$cs->fetchColumn();$pages=max(1,(int)ceil($total/$perPage));$page=min($page,$pages);$offset=($page-1)*$perPage;$st=$pdo->prepare("SELECT p.*,c.name category_name,(SELECT COUNT(*) FROM product_images pi WHERE pi.product_id=p.id) photo_count FROM products p LEFT JOIN categories c ON c.id=p.category_id".$ws." ORDER BY p.id DESC LIMIT ".$perPage." OFFSET ".$offset);$st->execute($params);$rows=$st->fetchAll();
+function admin_product_url($page,$cat,$q){$a=[];if($cat)$a['category']=$cat;if($q!=='')$a['q']=$q;if($page>1)$a['page']=$page;return 'products.php'.($a?'?'.http_build_query($a):'');}
+?>
+<div class="admin-page-title"><div><h1>Produk</h1><p>Kelola katalog dan foto produk.</p></div></div>
+<?php if($msg):?><div class="alert"><?=e($msg)?></div><?php endif;?>
+<div class="panel"><form method="post" enctype="multipart/form-data" class="product-admin-form"><input name="name" placeholder="Nama produk" required><select name="category_id" required><option value="">Pilih kategori</option><?php foreach($cats as $c):?><option value="<?=$c['id']?>"><?=e($c['name'])?></option><?php endforeach;?></select><textarea name="description" placeholder="Keterangan (opsional)"></textarea><input name="price" placeholder="Harga (opsional)"><label class="upload-label">Foto produk — bisa pilih beberapa sekaligus<input type="file" name="images[]" accept="image/jpeg,image/png,image/webp" multiple required><small>JPG, PNG, WebP • maksimal 5 MB per foto • foto pertama menjadi foto utama</small></label><label><input type="checkbox" name="featured"> Produk unggulan</label><button class="admin-primary">+ Simpan Produk</button></form></div>
+<div class="panel"><form class="admin-filter" method="get"><input type="search" name="q" value="<?=e($q)?>" placeholder="Cari nama produk..."><select name="category"><option value="0">Semua kategori</option><?php foreach($cats as $c):?><option value="<?=$c['id']?>" <?=$cat===$c['id']?'selected':''?>><?=e($c['name'])?></option><?php endforeach;?></select><button>Cari</button></form><div class="product-admin-table-wrap"><table><thead><tr><th>Foto</th><th>Produk</th><th>Kategori</th><th>Foto</th><th>Harga</th><th>Aksi</th></tr></thead><tbody><?php foreach($rows as $p):?><tr><td><?php if($p['image']):?><img class="thumb" src="<?=e($p['image'])?>" alt=""><?php endif;?></td><td><strong><?=e($p['name'])?></strong></td><td><?=e($p['category_name']?:'-')?></td><td><?=$p['photo_count']?> foto</td><td><?=e($p['price']?:'-')?></td><td><a href="../produk-detail.php?id=<?=$p['id']?>" target="_blank">Lihat</a> · <a href="?delete=<?=$p['id']?>" onclick="return confirm('Hapus produk dan semua fotonya?')">Hapus</a></td></tr><?php endforeach;?></tbody></table></div>
+<?php if($pages>1):?><nav class="admin-pagination"><?php if($page>1):?><a href="<?=e(admin_product_url($page-1,$cat,$q))?>">←</a><?php endif;?><?php for($n=1;$n<=$pages;$n++):?><a class="<?=$n===$page?'active':''?>" href="<?=e(admin_product_url($n,$cat,$q))?>"><?=$n?></a><?php endfor;?><?php if($page<$pages):?><a href="<?=e(admin_product_url($page+1,$cat,$q))?>">→</a><?php endif;?></nav><?php endif;?></div>
+<?php require '_foot.php';?>
