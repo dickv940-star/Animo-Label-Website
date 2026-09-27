@@ -10,7 +10,11 @@
 <body>
 <header class="header">
   <a class="brand" href="index.html"><img class="site-logo" src="assets/animo-logo.svg" alt="ANIMO LABEL"></a>
-  <button class="menu-toggle" aria-label="Buka menu">☰</button>
+  <form class="header-search" action="produk.php" method="get" role="search">
+    <span class="header-search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.2 4.2"></path></svg></span>
+    <input type="search" name="q" placeholder="Cari produk..." aria-label="Cari produk">
+    <button class="header-search-clear" type="button" aria-label="Hapus pencarian" title="Hapus pencarian">×</button>
+  </form>
   <nav class="main-nav">
     <a class="active" href="#home">Beranda</a><a href="#produk">Produk</a><a href="#layanan">Layanan</a><a href="#portfolio">Portfolio</a><a href="#tentang">Tentang</a><a href="#kontak">Kontak</a>
   </nav>
@@ -85,6 +89,16 @@
 const toggle=document.querySelector('.menu-toggle'),nav=document.querySelector('.main-nav');
 toggle?.addEventListener('click',()=>nav.classList.toggle('open'));
 nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+</script>
+<script>
+document.querySelectorAll('.header-search').forEach(form=>{
+  const input=form.querySelector('input');
+  const clear=form.querySelector('.header-search-clear');
+  const sync=()=>form.classList.toggle('has-value',input.value.trim()!=='');
+  input.addEventListener('input',sync);
+  clear.addEventListener('click',()=>{input.value='';input.focus();sync()});
+  sync();
+});
 </script>
 </body>
 </html>
