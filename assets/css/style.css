@@ -26,3 +26,5 @@
  .wa-text{display:none}
  .wa-icon{width:40px;height:40px}
 }
+
+.marketplace-links{display:grid;gap:10px}.tokopedia-icon{background:#03ac0e}@media(min-width:761px){.marketplace-links{grid-template-columns:1fr 1fr}.marketplace-box .marketplace-link{height:100%}}
