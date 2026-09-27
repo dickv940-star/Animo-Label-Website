@@ -211,3 +211,40 @@
   .header .brand{justify-content:center!important}
   .header .header-search{max-width:none!important}
 }
+
+/* =========================================================
+   MARKETPLACE LOGOS
+========================================================= */
+.marketplace-logo-icon{
+  width:72px!important;
+  height:58px!important;
+  border-radius:12px!important;
+  display:grid!important;
+  place-items:center!important;
+  background:#fff!important;
+  border:1px solid var(--line)!important;
+  overflow:hidden!important;
+  flex:none!important;
+}
+.marketplace-logo-icon img{
+  width:88%!important;
+  height:88%!important;
+  object-fit:contain!important;
+  display:block!important;
+}
+.shopee-logo-icon{background:#fff7f4!important}
+.tokopedia-logo-icon{background:#f2fff4!important}
+.footer-marketplace-logo{
+  width:22px!important;
+  height:22px!important;
+  object-fit:contain!important;
+  display:inline-block!important;
+  vertical-align:middle!important;
+  margin-right:7px!important;
+}
+@media(max-width:760px){
+  .marketplace-logo-icon{
+    width:64px!important;
+    height:54px!important;
+  }
+}
