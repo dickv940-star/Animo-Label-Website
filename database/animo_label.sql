@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS settings(id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(100) UNIQUE,value TEXT NULL);
+CREATE TABLE IF NOT EXISTS admins(id INT AUTO_INCREMENT PRIMARY KEY,username VARCHAR(80) UNIQUE,password_hash VARCHAR(255) NOT NULL);
+CREATE TABLE IF NOT EXISTS categories(id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(160) NOT NULL,image VARCHAR(255),sort_order INT DEFAULT 0);
+CREATE TABLE IF NOT EXISTS banners(id INT AUTO_INCREMENT PRIMARY KEY,eyebrow VARCHAR(160),title VARCHAR(255) NOT NULL,subtitle TEXT,image VARCHAR(255),button_text VARCHAR(100),button_url VARCHAR(255),sort_order INT DEFAULT 0,active TINYINT DEFAULT 1);
+CREATE TABLE IF NOT EXISTS products(id INT AUTO_INCREMENT PRIMARY KEY,category_id INT NULL,name VARCHAR(200) NOT NULL,description TEXT NULL,price VARCHAR(120) NULL,image VARCHAR(255),featured TINYINT DEFAULT 0,active TINYINT DEFAULT 1,created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS services(id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(160) NOT NULL,description TEXT,sort_order INT DEFAULT 0,active TINYINT DEFAULT 1);
+CREATE TABLE IF NOT EXISTS portfolio(id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(200) NOT NULL,description TEXT,image VARCHAR(255),sort_order INT DEFAULT 0,active TINYINT DEFAULT 1);
+INSERT IGNORE INTO settings(name,value) VALUES('site_name','Animo Label'),('description','Solusi label dan printing untuk kebutuhan bisnis Anda.'),('about_title','Mencetak ide menjadi identitas brand.'),('about','Animo Label membantu bisnis menghadirkan label dan materi printing yang profesional.'),('address','Alamat perusahaan'),('phone',''),('whatsapp',''),('email',''),('instagram','');
+INSERT IGNORE INTO categories(name,sort_order) VALUES('Label Sticker',1),('Label Roll',2),('Packaging',3),('Hangtag',4);
+INSERT IGNORE INTO services(name,description,sort_order) VALUES('Custom Label','Label sesuai ukuran, material, bentuk, dan finishing.',1),('Packaging Printing','Solusi printing untuk kemasan produk dan kebutuhan branding.',2),('Corporate Printing','Materi cetak untuk kebutuhan bisnis dan promosi.',3);
