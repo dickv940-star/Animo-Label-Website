@@ -1,0 +1,1 @@
+document.querySelectorAll('.hero-slide').forEach((el,i)=>{if(document.querySelectorAll('.hero-slide').length>1)setInterval(()=>{const a=[...document.querySelectorAll('.hero-slide')];a.forEach(x=>x.classList.remove('active'));a[(i+1)%a.length].classList.add('active')},6000)});
