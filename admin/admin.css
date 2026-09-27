@@ -92,3 +92,14 @@ code{background:var(--green-soft);padding:3px 7px;border-radius:6px;font-size:13
   .panel,.card{padding:18px}
   .topbar-user span:last-child{display:none}
 }
+.admin-filter{display:grid;grid-template-columns:minmax(220px,1fr) 220px auto;gap:10px;margin-bottom:18px}
+.admin-filter input,.admin-filter select{margin:0}.admin-filter button{padding:11px 22px}
+.product-admin-table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}
+.product-admin-table-wrap table{min-width:760px}
+.admin-pagination{display:flex;justify-content:center;gap:7px;margin-top:20px}
+.admin-pagination a{min-width:38px;height:38px;padding:0 10px;display:grid;place-items:center;border:1px solid var(--line);border-radius:9px;text-decoration:none;background:#fff;font-weight:800;font-size:14px}
+.admin-pagination a:hover,.admin-pagination a.active{background:var(--dark);border-color:var(--dark);color:#fff}
+.product-admin-form{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px}
+.product-admin-form textarea,.product-admin-form .upload-label{grid-column:1/-1}
+.product-admin-form button{justify-self:start;margin-top:8px}
+@media(max-width:700px){.admin-filter{grid-template-columns:1fr}.product-admin-form{grid-template-columns:1fr}.product-admin-form textarea,.product-admin-form .upload-label{grid-column:auto}}
