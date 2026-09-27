@@ -1,0 +1,10 @@
+config/database.local.php
+.env
+.DS_Store
+*.log
+uploads/products/*
+uploads/categories/*
+uploads/banners/*
+uploads/portfolio/*
+uploads/general/*
+!.gitkeep
