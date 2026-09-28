@@ -361,3 +361,32 @@ footer > div:nth-child(4){
     white-space:normal!important;
   }
 }
+
+
+/* FORCE FOOTER MARKETPLACE INLINE ALIGNMENT */
+footer .footer-marketplace-text{
+  display:inline-block!important;
+  white-space:nowrap!important;
+  vertical-align:middle!important;
+  line-height:28px!important;
+}
+footer .footer-marketplace-logo{
+  display:inline-block!important;
+  width:28px!important;
+  height:28px!important;
+  min-width:28px!important;
+  max-width:28px!important;
+  object-fit:contain!important;
+  vertical-align:middle!important;
+  margin:0 8px 0 0!important;
+}
+footer > div:nth-child(4) > a{
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  flex-wrap:nowrap!important;
+  gap:0!important;
+  width:max-content!important;
+  max-width:100%!important;
+  white-space:nowrap!important;
+}
