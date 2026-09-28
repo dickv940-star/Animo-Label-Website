@@ -303,3 +303,11 @@
     display:flex!important;
   }
 }
+
+
+/* =========================================================
+   ANIMO LABEL LOGO - SLIGHTLY LARGER
+========================================================= */
+.header .site-logo{width:170px!important}
+@media(max-width:1180px){.header .site-logo{width:135px!important}}
+@media(max-width:760px){.header .site-logo{width:130px!important}}
