@@ -248,3 +248,68 @@
     height:54px!important;
   }
 }
+
+
+/* FINAL HEADER NAV + EXPANDING WHATSAPP */
+@media(min-width:1181px){
+  .header .main-nav{display:flex!important}
+}
+@media(min-width:1001px) and (max-width:1180px){
+  .header .main-nav{display:flex!important;gap:12px!important;font-size:13px!important}
+  .header{grid-template-columns:150px 200px 1fr auto!important;gap:12px!important}
+  .header .brand{width:150px!important;min-width:150px!important}
+  .header .header-search{width:200px!important;max-width:200px!important}
+  .header .nav-cta{display:none!important}
+}
+@media(max-width:1000px){
+  .header .main-nav{display:none!important}
+}
+.wa-float{
+  position:fixed!important;
+  right:24px!important;
+  bottom:24px!important;
+  z-index:9999!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  width:58px!important;
+  height:58px!important;
+  padding:0 17px!important;
+  overflow:hidden!important;
+  border-radius:999px!important;
+  background:#19a463!important;
+  color:#fff!important;
+  box-shadow:0 12px 30px rgba(13,92,52,.28)!important;
+  transition:width .28s ease,box-shadow .28s ease,transform .2s ease!important;
+}
+.wa-float:hover,.wa-float:focus-visible{
+  width:290px!important;
+  transform:translateY(-3px)!important;
+  box-shadow:0 16px 38px rgba(13,92,52,.34)!important;
+}
+.wa-icon{
+  width:34px!important;
+  height:34px!important;
+  flex:0 0 34px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:50%!important;
+  background:transparent!important;
+  color:#fff!important;
+}
+.wa-icon svg{width:34px!important;height:34px!important;display:block!important}
+.wa-text{
+  white-space:nowrap!important;
+  opacity:0!important;
+  transform:translateX(8px)!important;
+  transition:opacity .18s ease .08s,transform .22s ease .08s!important;
+}
+.wa-float:hover .wa-text,.wa-float:focus-visible .wa-text{
+  opacity:1!important;
+  transform:translateX(0)!important;
+}
+@media(max-width:760px){
+  .wa-float{right:16px!important;bottom:16px!important;width:54px!important;height:54px!important;padding:0 15px!important}
+  .wa-float:hover,.wa-float:focus-visible{width:270px!important}
+  .wa-icon,.wa-icon svg{width:32px!important;height:32px!important}
+}
