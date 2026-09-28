@@ -311,3 +311,91 @@
 .header .site-logo{width:170px!important}
 @media(max-width:1180px){.header .site-logo{width:135px!important}}
 @media(max-width:760px){.header .site-logo{width:130px!important}}
+
+/* =========================================================
+   WHATSAPP FLOATING LABEL - MODERN / INSIDE SCREEN
+========================================================= */
+.wa-float{
+  position:fixed!important;
+  right:24px!important;
+  bottom:24px!important;
+  z-index:99999!important;
+  width:auto!important;
+  min-width:0!important;
+  max-width:calc(100vw - 32px)!important;
+  height:58px!important;
+  padding:6px 7px 6px 18px!important;
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:10px!important;
+  border:1px solid rgba(255,255,255,.5)!important;
+  border-radius:999px!important;
+  background:#25D366!important;
+  color:#fff!important;
+  box-shadow:0 10px 28px rgba(0,0,0,.20)!important;
+  overflow:hidden!important;
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease!important;
+  animation:none!important;
+}
+.wa-float:hover{
+  transform:translateY(-3px)!important;
+  background:#20c85f!important;
+  box-shadow:0 14px 34px rgba(0,0,0,.24)!important;
+}
+.wa-text{
+  display:block!important;
+  order:1!important;
+  max-width:calc(100vw - 120px)!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  white-space:nowrap!important;
+  font-size:12px!important;
+  line-height:1!important;
+  letter-spacing:.035em!important;
+  font-weight:800!important;
+  color:#fff!important;
+}
+.wa-icon{
+  order:2!important;
+  width:44px!important;
+  height:44px!important;
+  flex:0 0 44px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:50%!important;
+  background:#fff!important;
+  color:#16834a!important;
+  overflow:hidden!important;
+}
+.wa-icon img{
+  width:32px!important;
+  height:32px!important;
+  object-fit:contain!important;
+  display:block!important;
+}
+@media(max-width:760px){
+  .wa-float{
+    right:16px!important;
+    bottom:16px!important;
+    max-width:calc(100vw - 32px)!important;
+    height:52px!important;
+    padding:5px 6px 5px 13px!important;
+    gap:8px!important;
+  }
+  .wa-text{
+    max-width:calc(100vw - 94px)!important;
+    font-size:10px!important;
+    letter-spacing:.02em!important;
+  }
+  .wa-icon{
+    width:40px!important;
+    height:40px!important;
+    flex-basis:40px!important;
+  }
+  .wa-icon img{
+    width:29px!important;
+    height:29px!important;
+  }
+}
