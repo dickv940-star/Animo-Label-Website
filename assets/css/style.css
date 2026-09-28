@@ -1,5 +1,6 @@
-/* Existing stylesheet preserved above. */
+undefined
 
+/* WHATSAPP ORDER BUTTON - FINAL CLEAN VERSION */
 .wa-float{
   position:fixed!important;
   right:24px!important;
@@ -73,6 +74,7 @@
     bottom:16px!important;
     min-width:0!important;
     width:auto!important;
+    max-width:calc(100vw - 32px)!important;
     height:58px!important;
     padding:6px 9px 6px 15px!important;
     gap:9px!important;
