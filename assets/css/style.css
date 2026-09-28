@@ -405,3 +405,12 @@ footer .footer-tokopedia-logo{
   box-sizing:border-box!important;
   padding:0!important;
 }
+
+
+/* FOOTER TOKOPEDIA — SAMAKAN UKURAN VISUAL DENGAN SHOPEE */
+footer .footer-tokopedia-logo{
+  width:32px!important;
+  height:32px!important;
+  transform:scale(1.38)!important;
+  transform-origin:center!important;
+}
