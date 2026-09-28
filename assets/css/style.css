@@ -504,3 +504,65 @@ footer .footer-tokopedia-logo{
   }
   .wa-float .wa-text{font-size:12px!important}
 }
+
+
+/* FINAL WHATSAPP — PROVIDED ICON + CLEAR LABEL */
+.wa-float{
+  width:60px!important;
+  height:60px!important;
+  padding:0 13px!important;
+  gap:12px!important;
+  border-radius:30px!important;
+  background:#19a463!important;
+}
+.wa-float .wa-icon{
+  width:34px!important;
+  height:34px!important;
+  min-width:34px!important;
+  flex:0 0 34px!important;
+  background:transparent!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.wa-float .wa-icon img{
+  display:block!important;
+  width:34px!important;
+  height:34px!important;
+  max-width:none!important;
+  object-fit:contain!important;
+}
+.wa-float .wa-text{
+  color:#fff!important;
+  font-size:14px!important;
+  font-weight:800!important;
+  letter-spacing:.01em!important;
+  line-height:1.25!important;
+  text-shadow:0 1px 2px rgba(0,0,0,.18)!important;
+}
+.wa-float:hover,
+.wa-float:focus-visible{
+  width:320px!important;
+  padding-right:22px!important;
+}
+@media(max-width:760px){
+  .wa-float{
+    width:56px!important;
+    height:56px!important;
+    padding:0 12px!important;
+    border-radius:28px!important;
+  }
+  .wa-float .wa-icon,
+  .wa-float .wa-icon img{
+    width:32px!important;
+    height:32px!important;
+    min-width:32px!important;
+  }
+  .wa-float:hover,
+  .wa-float:focus-visible{
+    width:285px!important;
+  }
+  .wa-float .wa-text{
+    font-size:12px!important;
+  }
+}
