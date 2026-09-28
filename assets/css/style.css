@@ -399,3 +399,40 @@
     height:29px!important;
   }
 }
+
+/* =========================================================
+   FOOTER LOGO VISIBILITY
+========================================================= */
+footer .footer-brand .footer-logo{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:max-content!important;
+  min-width:190px!important;
+  min-height:72px!important;
+  padding:10px 16px!important;
+  margin:0 0 14px!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  border:1px solid rgba(255,255,255,.22)!important;
+  box-shadow:0 8px 24px rgba(0,0,0,.16)!important;
+}
+footer .footer-brand .footer-site-logo{
+  display:block!important;
+  width:160px!important;
+  max-width:100%!important;
+  height:auto!important;
+  object-fit:contain!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+@media(max-width:760px){
+  footer .footer-brand .footer-logo{
+    min-width:170px!important;
+    min-height:64px!important;
+    padding:8px 13px!important;
+  }
+  footer .footer-brand .footer-site-logo{
+    width:145px!important;
+  }
+}
