@@ -436,3 +436,73 @@ footer .footer-brand .footer-site-logo{
     width:145px!important;
   }
 }
+
+
+/* =========================================================
+   ANIMO LABEL HERO SLIDER
+   Product-focused: no packaging / hangtag
+========================================================= */
+.hero-slider{
+  min-height:680px!important;
+  position:relative!important;
+  overflow:hidden!important;
+  background:#0b2a1d!important;
+}
+.hero-slider .hero-slide{
+  min-height:680px!important;
+  background-size:cover!important;
+  background-position:center!important;
+}
+.hero-slider .hero-content{
+  max-width:720px!important;
+}
+.hero-slider .hero-slide h1{
+  max-width:720px!important;
+  text-wrap:balance;
+}
+.hero-slider .hero-slide p{
+  max-width:620px!important;
+}
+.hero-slider .hero-slide .hero-actions{
+  position:relative!important;
+  z-index:3!important;
+  flex-direction:row!important;
+  align-items:center!important;
+}
+.hero-slider .hero-note{
+  bottom:35px!important;
+}
+.hero-slider-controls{
+  pointer-events:none!important;
+}
+.hero-slider-controls .hero-dots,
+.hero-slider-controls .hero-controls-right{
+  pointer-events:auto!important;
+}
+.hero-slider .hero-arrow{
+  backdrop-filter:blur(8px);
+}
+.hero-slider .hero-dot{
+  opacity:.85;
+}
+@media(max-width:760px){
+  .hero-slider,.hero-slider .hero-slide{
+    min-height:650px!important;
+  }
+  .hero-slider .hero-slide{
+    padding:24% 6% 18%!important;
+  }
+  .hero-slider .hero-slide h1{
+    font-size:clamp(39px,12vw,56px)!important;
+  }
+  .hero-slider .hero-slide p{
+    font-size:16px!important;
+  }
+  .hero-slider .hero-slide .hero-actions{
+    flex-wrap:wrap!important;
+    gap:14px!important;
+  }
+  .hero-slider .hero-note{
+    bottom:82px!important;
+  }
+}
