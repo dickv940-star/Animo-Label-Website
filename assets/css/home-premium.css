@@ -817,3 +817,34 @@
     height:54px!important;
   }
 }
+
+
+/* Kategori produk — tampilkan foto produk utuh dan jelas */
+.premium-category-grid .premium-category img{
+  object-fit:contain!important;
+  object-position:center!important;
+  padding:18px!important;
+  background:#fff!important;
+  filter:none!important;
+}
+.premium-category-grid .premium-category:after{
+  background:linear-gradient(0deg,rgba(5,29,19,.78),rgba(5,29,19,.04) 58%,rgba(5,29,19,0) 100%)!important;
+}
+.premium-category-grid .premium-category.category-no-image{
+  background:linear-gradient(135deg,#edf3ef,#dfeae3)!important;
+}
+.premium-category-grid .premium-category.category-no-image:before{
+  content:"Foto produk belum tersedia";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  padding-bottom:52px;
+  color:#6d7b73;
+  font-size:12px;
+  font-weight:700;
+  z-index:1;
+}
+.premium-category-grid .premium-category.category-no-image:after{
+  background:linear-gradient(0deg,rgba(5,29,19,.72),rgba(5,29,19,.02) 65%)!important;
+}
