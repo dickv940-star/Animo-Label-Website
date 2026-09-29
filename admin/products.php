@@ -1,6 +1,14 @@
 <?php
 $title='Produk';require '_head.php';$msg='';
 try{
+if(isset($_POST['gallery_action'])){
+$pid=(int)($_POST['product_id']??0);$imageId=(int)($_POST['image_id']??0);$action=$_POST['gallery_action'];
+$st=$pdo->prepare('SELECT * FROM product_images WHERE id=? AND product_id=?');$st->execute([$imageId,$pid]);$photo=$st->fetch();if(!$photo)throw new RuntimeException('Foto tidak ditemukan.');
+if($action==='delete'){$pdo->prepare('DELETE FROM product_images WHERE id=?')->execute([$imageId]);$cur=$pdo->prepare('SELECT image FROM products WHERE id=?');$cur->execute([$pid]);$product=$cur->fetch();if($product&&$product['image']===$photo['image']){$n=$pdo->prepare('SELECT image FROM product_images WHERE product_id=? ORDER BY sort_order,id LIMIT 1');$n->execute([$pid]);$pdo->prepare('UPDATE products SET image=? WHERE id=?')->execute([$n->fetchColumn()?:'',$pid]);}}
+elseif($action==='main'){$pdo->prepare('UPDATE products SET image=? WHERE id=?')->execute([$photo['image'],$pid]);}
+elseif($action==='up'||$action==='down'){$cur=(int)$photo['sort_order'];$op=$action==='up'?'<' : '>'; $order=$action==='up'?'DESC':'ASC';$q=$pdo->prepare("SELECT id,sort_order FROM product_images WHERE product_id=? AND sort_order $op ? ORDER BY sort_order $order,id $order LIMIT 1");$q->execute([$pid,$cur]);$other=$q->fetch();if($other){$pdo->prepare('UPDATE product_images SET sort_order=? WHERE id=?')->execute([$other['sort_order'],$imageId]);$pdo->prepare('UPDATE product_images SET sort_order=? WHERE id=?')->execute([$cur,$other['id']]);}}
+header('Location: products.php?edit='.$pid.'&saved=1');exit;
+}
 if(isset($_GET['delete'])){$id=(int)$_GET['delete'];$pdo->prepare('DELETE FROM product_images WHERE product_id=?')->execute([$id]);$pdo->prepare('DELETE FROM products WHERE id=?')->execute([$id]);header('Location: products.php');exit;}
 if(isset($_GET['edit'])){$editId=(int)$_GET['edit'];$st=$pdo->prepare('SELECT * FROM products WHERE id=?');$st->execute([$editId]);$edit=$st->fetch();if(!$edit)throw new RuntimeException('Produk tidak ditemukan.');}
 if($_SERVER['REQUEST_METHOD']==='POST'){
@@ -28,7 +36,7 @@ $cats=$pdo->query('SELECT * FROM categories ORDER BY name')->fetchAll();
 $q=trim($_GET['q']??'');$cat=(int)($_GET['category']??0);$page=max(1,(int)($_GET['page']??1));$perPage=15;$where=[];$params=[];if($cat){$where[]='p.category_id=?';$params[]=$cat;}if($q!==''){$where[]='(p.name LIKE ? OR p.description LIKE ?)';$params[]='%'.$q.'%';$params[]='%'.$q.'%';}$ws=$where?' WHERE '.implode(' AND ',$where):'';$cs=$pdo->prepare('SELECT COUNT(*) FROM products p'.$ws);$cs->execute($params);$total=(int)$cs->fetchColumn();$pages=max(1,(int)ceil($total/$perPage));$page=min($page,$pages);$offset=($page-1)*$perPage;$st=$pdo->prepare("SELECT p.*,c.name category_name,(SELECT COUNT(*) FROM product_images pi WHERE pi.product_id=p.id) photo_count FROM products p LEFT JOIN categories c ON c.id=p.category_id".$ws." ORDER BY p.id DESC LIMIT ".$perPage." OFFSET ".$offset);$st->execute($params);$rows=$st->fetchAll();
 function admin_product_url($page,$cat,$q){$a=[];if($cat)$a['category']=$cat;if($q!=='')$a['q']=$q;if($page>1)$a['page']=$page;return 'products.php'.($a?'?'.http_build_query($a):'');}
 ?>
-<div class="admin-page-title"><div><h1>Produk</h1><p>Kelola katalog, foto utama, dan galeri foto produk.</p></div></div>
+<div class="admin-page-title"><div><h1>Produk</h1><p>Kelola data, foto utama, galeri, urutan, dan visibilitas produk.</p></div></div>
 <?php if($msg):?><div class="alert"><?=e($msg)?></div><?php endif;?>
 <div class="panel"><form method="post" enctype="multipart/form-data" class="product-admin-form">
 <?php if(!empty($edit)):?><input type="hidden" name="id" value="<?=$edit['id']?>"><?php endif;?>
@@ -43,7 +51,23 @@ function admin_product_url($page,$cat,$q){$a=[];if($cat)$a['category']=$cat;if($
 <button class="admin-primary" name="save_product" value="1"><?=!empty($edit)?'Simpan Perubahan':' + Simpan Produk'?></button>
 <?php if(!empty($edit)):?><a class="admin-secondary" href="products.php">Batal</a><?php endif;?>
 </form></div>
+<?php if(!empty($edit)): ?>
+<div class="panel product-gallery-admin">
+<div class="panel-heading"><div><h2>Kelola Foto Produk</h2><p>Atur foto utama, urutan galeri, atau hapus foto.</p></div><span class="photo-count"><?=count($gallery)?> foto</span></div>
+<?php if($gallery): ?><div class="gallery-admin-grid">
+<?php foreach($gallery as $i=>$photo): ?><article class="gallery-admin-card <?=($edit['image']===$photo['image'])?'is-main':''?>">
+<div class="gallery-admin-image"><img src="<?=e($photo['image'])?>" alt="<?=e($edit['name'])?> - foto <?=$i+1?>" loading="lazy"><?php if($edit['image']===$photo['image']): ?><span class="main-badge">UTAMA</span><?php endif; ?></div>
+<div class="gallery-admin-meta"><strong>Foto <?=$i+1?></strong><small><?=e(basename($photo['image']))?></small></div>
+<div class="gallery-admin-actions">
+<?php if($edit['image']!==$photo['image']): ?><form method="post"><input type="hidden" name="product_id" value="<?=$edit['id']?>"><input type="hidden" name="image_id" value="<?=$photo['id']?>"><button name="gallery_action" value="main">Jadikan utama</button></form><?php endif; ?>
+<form method="post"><input type="hidden" name="product_id" value="<?=$edit['id']?>"><input type="hidden" name="image_id" value="<?=$photo['id']?>"><button name="gallery_action" value="up" <?=($i===0?'disabled':'')?>>↑</button></form>
+<form method="post"><input type="hidden" name="product_id" value="<?=$edit['id']?>"><input type="hidden" name="image_id" value="<?=$photo['id']?>"><button name="gallery_action" value="down" <?=($i===count($gallery)-1?'disabled':'')?>>↓</button></form>
+<form method="post" onsubmit="return confirm('Hapus foto ini dari galeri?')"><input type="hidden" name="product_id" value="<?=$edit['id']?>"><input type="hidden" name="image_id" value="<?=$photo['id']?>"><button class="danger" name="gallery_action" value="delete">Hapus</button></form>
+</div></article><?php endforeach; ?></div>
+<?php else: ?><div class="empty-gallery">Belum ada foto galeri. Upload foto tambahan di atas.</div><?php endif; ?>
+</div>
+<?php endif; ?>
 <div class="panel"><form class="admin-filter" method="get"><input type="search" name="q" value="<?=e($q)?>" placeholder="Cari nama produk..."><select name="category"><option value="0">Semua kategori</option><?php foreach($cats as $c):?><option value="<?=$c['id']?>" <?=$cat===$c['id']?'selected':''?>><?=e($c['name'])?></option><?php endforeach;?></select><button>Cari</button></form>
-<div class="product-admin-table-wrap"><table><thead><tr><th>Foto</th><th>Produk</th><th>Kategori</th><th>Galeri</th><th>Harga</th><th>Aksi</th></tr></thead><tbody><?php foreach($rows as $p):?><tr><td><?php if($p['image']):?><img class="thumb" src="<?=e($p['image'])?>" alt="<?=e($p['name'])?>"><?php endif;?></td><td><strong><?=e($p['name'])?></strong></td><td><?=e($p['category_name']?:'-')?></td><td><?=$p['photo_count']?> foto</td><td><?=e($p['price']?:'-')?></td><td><a href="?edit=<?=$p['id']?>">Edit foto/data</a> · <a href="../produk-detail.php?id=<?=$p['id']?>" target="_blank">Lihat</a> · <a href="?delete=<?=$p['id']?>" onclick="return confirm('Hapus produk dan semua fotonya?')">Hapus</a></td></tr><?php endforeach;?></tbody></table></div>
+<div class="product-admin-table-wrap"><table><thead><tr><th>Foto</th><th>Produk</th><th>Kategori</th><th>Galeri</th><th>Harga</th><th>Aksi</th></tr></thead><tbody><?php foreach($rows as $p):?><tr><td><?php if($p['image']):?><img class="thumb" src="<?=e($p['image'])?>" alt="<?=e($p['name'])?>"><?php endif;?></td><td><strong><?=e($p['name'])?></strong></td><td><?=e($p['category_name']?:'-')?></td><td><?=$p['photo_count']?> foto</td><td><?=e($p['price']?:'-')?></td><td><a href="?edit=<?=$p['id']?>">Kelola foto/data</a> · <a href="../produk-detail.php?id=<?=$p['id']?>" target="_blank">Lihat</a> · <a href="?delete=<?=$p['id']?>" onclick="return confirm('Hapus produk dan semua fotonya?')">Hapus</a></td></tr><?php endforeach;?></tbody></table></div>
 <?php if($pages>1):?><nav class="admin-pagination"><?php if($page>1):?><a href="<?=e(admin_product_url($page-1,$cat,$q))?>">←</a><?php endif;?><?php for($n=1;$n<=$pages;$n++):?><a class="<?=$n===$page?'active':''?>" href="<?=e(admin_product_url($n,$cat,$q))?>"><?=$n?></a><?php endfor;?><?php if($page<$pages):?><a href="<?=e(admin_product_url($page+1,$cat,$q))?>">→</a><?php endif;?></nav><?php endif;?></div>
 <?php require '_foot.php';?>
