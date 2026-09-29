@@ -567,3 +567,69 @@ footer .footer-tokopedia-logo{
   }
 }
 \n/* CATALOG 2026 */\n.catalog-shell{padding-top:8px}.catalog-toolbar-modern{display:grid;gap:18px;margin-bottom:30px}.catalog-search{display:flex;align-items:center;gap:10px;max-width:760px;min-height:54px;padding:7px 9px 7px 15px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 8px 25px rgba(18,59,42,.06)}.catalog-search .header-search-icon{position:static;display:grid;place-items:center;width:28px;height:28px;flex:0 0 28px}.catalog-search .header-search-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2}.catalog-search input{border:0;outline:0;flex:1;min-width:0;background:transparent;font:inherit;color:var(--ink)}.catalog-search button{border:0;border-radius:10px;padding:9px 13px;background:var(--green-light);color:var(--green-dark);font-weight:800;cursor:pointer}.catalog-meta{display:flex;align-items:center;justify-content:space-between;gap:16px;color:var(--muted);font-size:14px}.catalog-meta a{font-weight:800;color:var(--green-dark)}.catalog-chips{display:flex;flex-wrap:wrap;gap:9px}.catalog-chips button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:9px 14px;font:inherit;font-weight:700;cursor:pointer;transition:.18s ease}.catalog-chips button:hover,.catalog-chips button.active{background:var(--green);border-color:var(--green);color:#fff}.catalog-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.catalog-product-card .product-image{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;background:var(--green-soft);overflow:hidden}.catalog-product-card .product-image img{width:100%;height:100%;object-fit:cover}.catalog-product-card .product-info h3{min-height:3.2em}.catalog-product-card .product-info strong{display:block;margin-top:8px;font-size:17px;color:var(--green-dark)}@media(max-width:1100px){.catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:760px){.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.catalog-meta{align-items:flex-start;flex-direction:column}.catalog-search{max-width:none}.catalog-chips{flex-wrap:nowrap;overflow:auto;padding-bottom:5px}.catalog-chips button{white-space:nowrap}.catalog-product-card .product-info h3{min-height:auto}}@media(max-width:520px){.catalog-grid{grid-template-columns:1fr}}\n
+/* PRODUCT PHOTO PRESENTATION */
+.catalog-product-card .product-image{
+  position:relative;
+  aspect-ratio:1/1!important;
+  padding:18px!important;
+  background:linear-gradient(145deg,#f7fbf8,#edf5ef)!important;
+}
+.catalog-product-card .product-image:after{
+  content:"ANIMO LABEL";
+  position:absolute;
+  left:14px;
+  bottom:12px;
+  padding:5px 8px;
+  border-radius:999px;
+  background:rgba(255,255,255,.88);
+  color:var(--green-dark);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.1em;
+  pointer-events:none;
+}
+.catalog-product-card .product-image img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  mix-blend-mode:multiply;
+  filter:contrast(1.04) saturate(.98);
+  transition:transform .35s ease,filter .35s ease;
+}
+.catalog-product-card:hover .product-image img{
+  transform:scale(1.045);
+  filter:contrast(1.08) saturate(1.02);
+}
+.catalog-product-card .product-info{
+  padding:20px 20px 22px!important;
+}
+.catalog-product-card .product-info small{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:999px;
+  background:var(--green-soft);
+  color:var(--green-dark);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+.catalog-product-card .product-info h3{
+  font-size:19px!important;
+  line-height:1.3!important;
+  margin:11px 0 8px!important;
+}
+.catalog-product-card .product-info p{
+  min-height:3.4em;
+  font-size:14px!important;
+}
+.catalog-product-card .product-info .text-link{
+  display:inline-block;
+  margin-top:12px;
+  color:var(--green-dark);
+}
+@media(max-width:760px){
+  .catalog-product-card .product-image{padding:12px!important}
+  .catalog-product-card .product-info{padding:16px!important}
+  .catalog-product-card .product-info h3{font-size:16px!important}
+  .catalog-product-card .product-info p{font-size:13px!important}
+}
