@@ -11,7 +11,7 @@ $shopee=setting('shopee','https://shopee.co.id/animolabel');$tokopedia=setting('
 ?>
 <!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title><?=e($title)?></title><meta name="description" content="<?=e(setting('description','Solusi label dan sticker untuk kebutuhan bisnis.'))?>">
-<link rel="stylesheet" href="assets/css/style.css?v=20260929"><link rel="stylesheet" href="assets/css/home-premium.css?v=20260929"></head><body>
+<link rel="stylesheet" href="assets/css/style.css?v=20260929"><link rel="stylesheet" href="assets/css/home-premium.css?v=20260930"></head><body>
 <div class="topbar"><div>Solusi label & sticker untuk kebutuhan bisnis</div><div class="topbar-links"><span>Senin–Sabtu</span><span>•</span><a href="<?=e($wa)?>" target="_blank">WhatsApp <?=e(setting('whatsapp','+62 811-1711-338'))?></a></div></div>
 <header class="header premium-header"><a class="brand" href="index.php"><img class="site-logo" src="<?=e($logo?:'assets/logo-animo-label.png')?>" alt="<?=e($siteName)?>"></a>
 <form class="header-search premium-search" action="produk.php" method="get"><span class="header-search-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.2 4.2"></path></svg></span><input type="search" name="q" placeholder="Cari produk label atau sticker..."><button class="header-search-clear" type="button">×</button><button class="header-search-submit" type="submit">Cari</button></form>
@@ -28,5 +28,21 @@ $shopee=setting('shopee','https://shopee.co.id/animolabel');$tokopedia=setting('
 <section class="premium-marketplace"><div><small>MARKETPLACE</small><h2>Belanja ANIMO LABEL secara online.</h2><p>Temukan produk dan pilihan ukuran melalui marketplace kami.</p></div><div class="premium-marketplace-links"><a href="<?=e($shopee)?>" target="_blank"><img src="assets/shopee-logo-uploaded.svg" alt="Shopee"><span><b>Shopee</b><small>Buka toko ANIMO LABEL →</small></span></a><a href="<?=e($tokopedia)?>" target="_blank"><img src="assets/tokopedia-logo-uploaded.svg" alt="Tokopedia"><span><b>Tokopedia</b><small>Buka toko ANIMO LABEL →</small></span></a></div></section>
 <section class="premium-cta" id="kontak"><div><small>KONSULTASI PRODUK</small><h2>Belum yakin memilih ukuran atau jenis label?</h2><p>Kirim kebutuhan Anda. Kami bantu memilih produk yang sesuai.</p></div><a class="btn btn-light" href="<?=e($wa)?>" target="_blank">Konsultasi WhatsApp →</a></section>
 </main>
-<footer class="premium-footer"><div class="footer-brand"><img class="footer-site-logo" src="<?=e($logo?:'assets/logo-animo-label.png')?>" alt="<?=e($siteName)?>"><p>Solusi label dan sticker untuk kebutuhan bisnis Anda.</p></div><div><b>Produk</b><?php foreach(array_slice($cats,0,4) as $c):?><a href="produk.php?category=<?=urlencode($c['id'])?>"><?=e($c['name'])?></a><?php endforeach;?></div><div><b>Perusahaan</b><a href="#tentang">Tentang Animo Label</a><a href="#kontak">Kontak</a><a href="produk.php">Katalog Produk</a><a href="portfolio.php">Portfolio</a></div><div><b>Marketplace</b><a href="<?=e($shopee)?>" target="_blank">Shopee ANIMO LABEL →</a><a href="<?=e($tokopedia)?>" target="_blank">Tokopedia ANIMO LABEL →</a><a href="<?=e($wa)?>" target="_blank">WhatsApp →</a></div><div class="copyright">© <?=date('Y')?> <?=e($siteName)?>. All Rights Reserved.</div></footer>
-<a class="wa-float premium-wa" href="<?=e($wa)?>" target="_blank" aria-label="WhatsApp"><img src="assets/whatsapp-icon.webp" alt="WhatsApp"></a><script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script><script src="assets/js/home-premium.js?v=20260930"></script></body></html>
+<footer class="animo-footer">
+  <div class="animo-footer-main">
+    <section class="animo-footer-brand">
+      <a href="./" class="animo-footer-logo"><img src="<?=e($logo?:'assets/logo-animo-label.png')?>" alt="<?=e($siteName)?>"></a>
+      <p><?=e(setting('description','Solusi label dan sticker untuk kebutuhan bisnis Anda.'))?></p>
+      <div class="animo-footer-social" aria-label="Media sosial">
+        <a href="<?=e($wa)?>" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+        <?php if(setting('instagram')): ?><a href="<?=e(setting('instagram'))?>" target="_blank" rel="noopener" aria-label="Instagram">IG</a><?php endif; ?>
+      </div>
+      <div class="animo-footer-market"><a class="market-badge" href="<?=e($shopee)?>" target="_blank"><span class="market-badge-icon shopee">S</span><span><b>Shopee</b><small>ANIMO LABEL</small></span></a><a class="market-badge" href="<?=e($tokopedia)?>" target="_blank"><span class="market-badge-icon tokopedia">T</span><span><b>Tokopedia</b><small>ANIMO LABEL</small></span></a></div>
+    </section>
+    <section class="animo-footer-col"><h3>Produk</h3><?php foreach(array_slice($cats,0,4) as $c):?><a href="produk.php?category=<?=urlencode($c['id'])?>"><?=e($c['name'])?></a><?php endforeach;?><a class="footer-more" href="produk.php">Lihat semua produk →</a></section>
+    <section class="animo-footer-col"><h3>Perusahaan</h3><a href="#tentang">Tentang Animo Label</a><a href="produk.php">Katalog Produk</a><a href="portfolio.php">Portfolio</a><a href="#kontak">Kontak</a></section>
+    <section class="animo-footer-col animo-footer-contact"><h3>Hubungi Kami</h3><?php if(setting('address')):?><p class="footer-address"><?=nl2br(e(setting('address')))?></p><?php else:?><p class="footer-address">Silakan hubungi kami melalui WhatsApp untuk informasi produk dan konsultasi.</p><?php endif;?><a href="tel:<?=e(preg_replace('/\D+/','',setting('phone',setting('whatsapp','+62 811-1711-338'))))?>"><?=e(setting('phone',setting('whatsapp','+62 811-1711-338')))?></a><a href="<?=e($wa)?>" target="_blank" class="footer-wa-link">WhatsApp</a></section>
+  </div>
+  <div class="animo-footer-bottom"><span>© <?=date('Y')?> <?=e($siteName)?>. All Rights Reserved.</span><span>Label &amp; Sticker Profesional</span></div>
+</footer>
+<a class="wa-float premium-wa" href="<?=e($wa)?>" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="assets/whatsapp-icon.webp" alt="WhatsApp"><span class="wa-tooltip">Konsultasi via WhatsApp</span></a><script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script><script src="assets/js/home-premium.js?v=20260930"></script></body></html>
