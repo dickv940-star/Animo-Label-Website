@@ -687,48 +687,73 @@ footer .footer-tokopedia-logo{
 .dynamic-detail-copy>p{font-size:18px;line-height:1.75;color:#53615a}
 @media(max-width:850px){.product-detail{padding:34px 18px 65px}.dynamic-detail-grid{grid-template-columns:1fr;gap:28px}.dynamic-main-photo{height:380px;padding:22px;border-radius:22px}.dynamic-thumbs{grid-template-columns:repeat(5,1fr)}.dynamic-thumb{height:72px}.dynamic-detail-copy{padding:0}.dynamic-detail-copy h1{font-size:34px}.dynamic-detail-copy>p{font-size:16px}}
 
-/* PRODUCT PHOTO STUDIO BACKGROUND */
+/* PREMIUM MARKETPLACE STUDIO PRODUCT BACKGROUND */
 .dynamic-main-photo{
   position:relative;
   overflow:hidden;
   isolation:isolate;
+  min-height:560px;
   background:
-    radial-gradient(circle at 18% 18%,rgba(255,255,255,.98) 0 12%,transparent 34%),
-    radial-gradient(circle at 82% 25%,rgba(226,244,235,.9) 0 10%,transparent 35%),
-    radial-gradient(circle at 55% 100%,rgba(205,232,217,.72) 0 8%,transparent 36%),
-    linear-gradient(145deg,#ffffff 0%,#f5faf7 46%,#e8f3ed 100%);
-  border:1px solid #dce9e2;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 20px 55px rgba(20,76,48,.09);
+    radial-gradient(ellipse at 50% 8%,rgba(255,255,255,.98) 0%,rgba(255,255,255,.76) 18%,transparent 48%),
+    radial-gradient(circle at 10% 22%,rgba(217,242,228,.88) 0%,transparent 31%),
+    radial-gradient(circle at 92% 68%,rgba(191,224,205,.72) 0%,transparent 36%),
+    linear-gradient(155deg,#ffffff 0%,#f8fbf9 34%,#edf5f0 68%,#e2efe7 100%);
+  border:1px solid #d8e7de;
+  border-radius:30px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.98),
+    inset 0 -35px 70px rgba(74,124,96,.07),
+    0 24px 65px rgba(20,70,45,.12);
 }
 .dynamic-main-photo::before{
   content:"";
   position:absolute;
-  width:360px;height:360px;
-  right:-150px;top:-160px;
+  width:520px;height:520px;
+  left:50%;top:-310px;
+  transform:translateX(-50%);
   border-radius:50%;
-  background:rgba(255,255,255,.42);
-  filter:blur(2px);
+  background:radial-gradient(circle,rgba(255,255,255,.95) 0%,rgba(255,255,255,.38) 36%,transparent 70%);
+  filter:blur(4px);
   z-index:-1;
 }
 .dynamic-main-photo::after{
   content:"";
   position:absolute;
-  left:8%;right:8%;bottom:8%;
-  height:22%;
+  left:12%;right:12%;bottom:9%;
+  height:18%;
   border-radius:50%;
-  background:rgba(47,91,68,.08);
-  filter:blur(28px);
+  background:radial-gradient(ellipse,rgba(31,73,50,.17) 0%,rgba(31,73,50,.08) 38%,transparent 72%);
+  filter:blur(18px);
   z-index:-1;
 }
 .dynamic-main-photo img{
   position:relative;
   z-index:2;
-  filter:drop-shadow(0 20px 22px rgba(24,65,43,.16)) contrast(1.02) saturate(1.03);
+  max-width:92%;
+  max-height:92%;
+  filter:
+    drop-shadow(0 24px 25px rgba(27,66,46,.18))
+    drop-shadow(0 5px 7px rgba(27,66,46,.10))
+    contrast(1.03) saturate(1.04);
+  transition:transform .28s ease,filter .28s ease;
+}
+.dynamic-main-photo:hover img{
+  transform:scale(1.015);
+  filter:
+    drop-shadow(0 28px 30px rgba(27,66,46,.20))
+    drop-shadow(0 6px 8px rgba(27,66,46,.11))
+    contrast(1.04) saturate(1.05);
 }
 .dynamic-thumb{
-  background:linear-gradient(145deg,#ffffff,#f1f7f3);
-  border-color:#dce8e1;
+  background:linear-gradient(145deg,#ffffff,#f0f7f3);
+  border-color:#d9e6df;
+  box-shadow:0 5px 14px rgba(25,72,48,.05);
 }
 .dynamic-thumb.active{
-  background:linear-gradient(145deg,#f8fffb,#eaf6ef);
+  background:linear-gradient(145deg,#fbfffc,#e8f5ed);
+  border-color:#16834a;
+  box-shadow:0 6px 16px rgba(22,131,74,.12);
+}
+@media(max-width:850px){
+  .dynamic-main-photo{min-height:380px;border-radius:24px}
 }
