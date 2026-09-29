@@ -1,0 +1,17 @@
+name: Build cPanel ZIP
+on:
+  push:
+    branches: [main]
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create ZIP
+        run: |
+          rm -rf .git .github
+          zip -r ../Animo-Label-Website-cPanel.zip . -x '*.git*'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Animo-Label-Website-cPanel
+          path: ../Animo-Label-Website-cPanel.zip
