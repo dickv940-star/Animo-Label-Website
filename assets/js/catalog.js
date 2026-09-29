@@ -42,6 +42,7 @@ const ANIMO_CATALOG=[
 {id:30,cat:"Label Numbering",name:"STICKER NUMBERING BLITZ 2663 — 9 DIGIT",desc:"Sticker numbering Blitz 2663 dengan lem standar, pilihan 9 digit.",price:"Rp16.500–Rp17.600",img:"assets/banner-sticker-custom.svg",url:"https://shopee.co.id/LABEL-STICKER-NUMBERING-BLITZ-2663-LEM-STANDAR-9-Digit-Paxar-i.708541841.17291152724"},
 {id:31,cat:"Ribbon",name:"RIBBON BARCODE PREMIUM WAX 110 X 300 M",desc:"Ribbon barcode premium wax untuk kebutuhan cetak label.",price:"Rp33.500",img:"assets/banner-label-yupo.svg",url:"https://shopee.co.id/RIBBON-Barcode-PREMIUM-WAX-110-X-300-METER-Ribbon-Premium-Wax-110x300-M-i.708541841.22937576559"}];
 
+window.ANIMO_CATALOG=ANIMO_CATALOG;
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
 function renderCatalog(target,filter="",query=""){
  const q=query.trim().toLowerCase();
