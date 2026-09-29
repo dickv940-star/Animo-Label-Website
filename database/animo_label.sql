@@ -7,5 +7,12 @@ CREATE TABLE IF NOT EXISTS product_images(id INT AUTO_INCREMENT PRIMARY KEY,prod
 CREATE TABLE IF NOT EXISTS services(id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(160) NOT NULL,description TEXT,sort_order INT DEFAULT 0,active TINYINT DEFAULT 1);
 CREATE TABLE IF NOT EXISTS portfolio(id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(200) NOT NULL,description TEXT,image VARCHAR(255),sort_order INT DEFAULT 0,active TINYINT DEFAULT 1);
 INSERT IGNORE INTO settings(name,value) VALUES('site_name','Animo Label'),('description','Solusi label dan printing untuk kebutuhan bisnis Anda.'),('about_title','Mencetak ide menjadi identitas brand.'),('about','Animo Label membantu bisnis menghadirkan label dan materi printing yang profesional.'),('address','Alamat perusahaan'),('phone',''),('whatsapp','628111711338'),('email',''),('instagram','');
-INSERT IGNORE INTO categories(name,sort_order) VALUES('Label Sticker',1),('Label Roll',2),('Packaging',3),('Hangtag',4);
+INSERT INTO categories(name,image,sort_order) SELECT 'Label Thermal','assets/banner-label-thermal.svg',1 WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name='Label Thermal');
+INSERT INTO categories(name,image,sort_order) SELECT 'Label Semicoated','assets/banner-label-yupo.svg',2 WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name='Label Semicoated');
+INSERT INTO categories(name,image,sort_order) SELECT 'Stiker Bulat','assets/banner-sticker-custom.svg',3 WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name='Stiker Bulat');
+INSERT INTO categories(name,image,sort_order) SELECT 'Stiker HVS','assets/banner-sticker-custom.svg',4 WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name='Stiker HVS');
+INSERT INTO categories(name,image,sort_order) SELECT 'Label Size','assets/banner-sticker-custom.svg',5 WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name='Label Size');
+INSERT INTO categories(name,image,sort_order) SELECT 'Label Barcode','assets/banner-label-thermal.svg',6 WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name='Label Barcode');
+INSERT INTO categories(name,image,sort_order) SELECT 'Label Numbering','assets/banner-sticker-custom.svg',7 WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name='Label Numbering');
+INSERT INTO categories(name,image,sort_order) SELECT 'Label Fashion','assets/banner-sticker-custom.svg',8 WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name='Label Fashion');
 INSERT IGNORE INTO services(name,description,sort_order) VALUES('Custom Label','Label sesuai ukuran, material, bentuk, dan finishing.',1),('Packaging Printing','Solusi printing untuk kemasan produk dan kebutuhan branding.',2),('Corporate Printing','Materi cetak untuk kebutuhan bisnis dan promosi.',3);
