@@ -74,3 +74,21 @@
  .hero-badge{display:none}
  .premium-arrow{width:34px;height:34px}
 }
+
+/* ANIMO LABEL FOOTER */
+.animo-footer{margin-top:0;background:#0b2a1d;color:#fff;padding:64px 5% 22px}
+.animo-footer-main{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:minmax(280px,1.7fr) repeat(2,minmax(150px,1fr)) minmax(220px,1.15fr);gap:46px}
+.animo-footer-logo{display:inline-flex;margin-bottom:18px}.animo-footer-logo img{width:155px;max-height:58px;object-fit:contain;object-position:left center}
+.animo-footer-brand>p{max-width:390px;margin:0;color:#b8c8bf;font-size:14px;line-height:1.8}
+.animo-footer-market{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.market-badge{display:flex!important;align-items:center;gap:9px;min-width:145px;padding:9px 11px;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.045);transition:.2s ease}
+.market-badge:hover{transform:translateY(-2px);background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22)}
+.market-badge-icon{width:30px;height:30px;display:grid;place-items:center;flex:0 0 30px;border-radius:8px;color:#fff;font-weight:900;font-size:15px}
+.market-badge-icon.shopee{background:#ee4d2d}.market-badge-icon.tokopedia{background:#03ac0e}
+.market-badge b{display:block;color:#fff;font-size:12px;line-height:1.15}.market-badge small{display:block;color:#9eb1a7;font-size:9px;margin-top:2px}
+.animo-footer-col h3{margin:2px 0 14px;color:#fff;font-size:14px;font-weight:900}.animo-footer-col a{display:block;margin:0 0 8px;color:#b8c8bf;font-size:13px;line-height:1.55;transition:color .2s ease}.animo-footer-col a:hover{color:#fff}.animo-footer-col .footer-more{color:#d9e7df;font-weight:800;margin-top:12px}
+.animo-footer-contact p{margin:0 0 11px;color:#b8c8bf;font-size:13px;line-height:1.65}.animo-footer-contact .footer-wa-link{color:#7ce0a7;font-weight:900;margin-top:13px}
+.animo-footer-bottom{max-width:1500px;margin:42px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:20px;color:#81968b;font-size:11px}
+@media(max-width:1050px){.animo-footer-main{grid-template-columns:1.4fr 1fr 1fr;gap:35px}.animo-footer-brand{grid-column:1/-1}}
+@media(max-width:650px){.animo-footer{padding:48px 5% 20px}.animo-footer-main{grid-template-columns:1fr 1fr;gap:28px 22px}.animo-footer-brand{grid-column:1/-1}.animo-footer-contact{grid-column:1/-1}.animo-footer-bottom{margin-top:32px;display:block;line-height:1.8}.animo-footer-bottom span{display:block}.animo-footer-bottom span+span{margin-top:3px}}
+@media(max-width:430px){.animo-footer-main{grid-template-columns:1fr}.animo-footer-brand,.animo-footer-contact{grid-column:auto}.animo-footer-market{display:grid;grid-template-columns:1fr 1fr}.market-badge{min-width:0}}
