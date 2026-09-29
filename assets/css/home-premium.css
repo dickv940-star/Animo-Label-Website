@@ -141,3 +141,164 @@
 @media(max-width:900px){.premium-header{flex-wrap:wrap!important;padding:10px 18px!important}.premium-search{order:3;flex:1 0 100%!important;max-width:none!important;min-width:0!important}.premium-nav{display:none!important;position:absolute!important;top:82px!important;left:0!important;right:0!important;padding:14px 18px!important;background:#fff!important;border-bottom:1px solid #e7eee9!important;box-shadow:0 12px 25px rgba(15,55,37,.08)!important}.premium-nav.open{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:0!important}.premium-nav.open a{display:block!important;padding:11px 0!important}.premium-header .nav-cta{margin-left:auto!important}.animo-footer-main{grid-template-columns:1.2fr 1fr 1fr!important;gap:32px!important}.animo-footer-brand{grid-column:1/-1!important}}
 @media(max-width:620px){.premium-header{min-height:74px!important;padding:9px 14px!important}.premium-header .site-logo{width:140px!important;max-height:46px!important}.premium-header .nav-cta{font-size:11px!important;padding:0 12px!important;min-height:38px!important}.premium-search{height:42px!important}.category-strip-inner{min-height:40px!important;padding:0 14px!important}.category-strip a{padding:11px 8px!important;font-size:11px!important}.animo-footer{padding:44px 6% 18px!important}.animo-footer-main{grid-template-columns:1fr 1fr!important;gap:28px 20px!important}.animo-footer-brand,.animo-footer-contact{grid-column:1/-1!important}.animo-footer-logo img{width:160px!important}.animo-footer-market{display:grid!important;grid-template-columns:1fr 1fr!important}.market-badge{min-width:0!important}.premium-wa.wa-float{right:15px!important;bottom:15px!important;width:54px!important;height:54px!important}.premium-wa.wa-float img{width:54px!important;height:54px!important}.premium-wa:hover,.premium-wa:focus-visible{width:185px!important}.premium-wa .wa-tooltip{right:61px!important;font-size:11px!important}}
 @media(max-width:420px){.animo-footer-main{grid-template-columns:1fr!important}.animo-footer-brand,.animo-footer-contact{grid-column:auto!important}.animo-footer-market{grid-template-columns:1fr!important}}
+
+
+/* RECOMMENDED FOOTER — company information layout */
+.animo-footer-recommended{
+  margin-top:0!important;
+  padding:0 3.5% 28px!important;
+  background:#0d5b0d!important;
+  color:#fff!important;
+}
+.animo-footer-recommended .footer-benefits{
+  max-width:1500px;
+  margin:0 auto;
+  min-height:155px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  align-items:center;
+  text-align:center;
+}
+.animo-footer-recommended .footer-benefits>div{
+  padding:20px 25px;
+}
+.animo-footer-recommended .footer-benefits strong{
+  font-size:clamp(20px,1.65vw,30px);
+  line-height:1.25;
+  color:#fff;
+  font-weight:800;
+}
+.animo-footer-recommended .footer-company{
+  max-width:1500px;
+  margin:0 auto;
+  padding:25px 0 65px;
+}
+.animo-footer-recommended .footer-company-left{
+  max-width:980px;
+}
+.animo-footer-recommended .animo-footer-logo{
+  display:inline-flex!important;
+  margin:0 0 12px!important;
+  background:#fff;
+  border-radius:12px;
+  padding:8px 18px;
+}
+.animo-footer-recommended .animo-footer-logo img{
+  width:415px!important;
+  max-width:min(415px,72vw)!important;
+  height:auto!important;
+  max-height:88px!important;
+  object-fit:contain!important;
+}
+.animo-footer-recommended .footer-company-left>p{
+  margin:0 0 28px;
+  color:#fff;
+  font-size:20px;
+  line-height:1.5;
+}
+.animo-footer-recommended .footer-company-left h2{
+  margin:0 0 32px;
+  color:#fff;
+  font-size:32px;
+  letter-spacing:.02em;
+}
+.animo-footer-recommended .footer-company-left h3{
+  margin:0 0 7px;
+  color:#fff;
+  font-size:22px;
+  line-height:1.25;
+}
+.animo-footer-recommended .footer-company-value{
+  margin:0 0 22px;
+  color:#fff;
+  font-size:20px;
+  line-height:1.55;
+}
+.animo-footer-recommended .footer-address-row{
+  display:flex;
+  align-items:center;
+  gap:48px;
+}
+.animo-footer-recommended .footer-address-row .footer-company-value{
+  margin:0;
+  max-width:760px;
+}
+.animo-footer-recommended .footer-map-pin{
+  flex:0 0 90px;
+  width:90px;
+  height:115px;
+  display:grid;
+  place-items:center;
+  text-decoration:none;
+}
+.animo-footer-recommended .map-pin-shape{
+  position:relative;
+  width:70px;
+  height:92px;
+  background:#ef2631;
+  border:3px solid #111;
+  border-radius:55% 55% 55% 0;
+  transform:rotate(-45deg);
+  box-shadow:0 4px 0 rgba(0,0,0,.15);
+}
+.animo-footer-recommended .map-pin-shape:before{
+  content:"";
+  position:absolute;
+  width:30px;
+  height:30px;
+  left:17px;
+  top:17px;
+  background:#fff;
+  border:3px solid #111;
+  border-radius:50%;
+}
+.animo-footer-recommended .map-pin-shape:after{
+  content:"";
+  position:absolute;
+  width:38px;
+  height:10px;
+  left:10px;
+  bottom:-13px;
+  background:#f8c83e;
+  border:2px solid #111;
+  border-radius:50%;
+  transform:rotate(45deg);
+}
+.animo-footer-recommended .footer-map-pin:hover .map-pin-shape{
+  transform:rotate(-45deg) translateY(-5px);
+}
+.animo-footer-recommended .animo-footer-bottom{
+  max-width:1500px!important;
+  margin:0 auto!important;
+  padding:18px 0 0!important;
+  border-top:1px solid rgba(255,255,255,.18)!important;
+  color:rgba(255,255,255,.72)!important;
+  font-size:11px!important;
+}
+@media(max-width:800px){
+  .animo-footer-recommended{padding:0 5% 22px!important}
+  .animo-footer-recommended .footer-benefits{
+    grid-template-columns:1fr;
+    min-height:0;
+    padding:24px 0 10px;
+    text-align:left;
+  }
+  .animo-footer-recommended .footer-benefits>div{padding:10px 0}
+  .animo-footer-recommended .footer-benefits strong{font-size:20px}
+  .animo-footer-recommended .footer-company{padding:25px 0 45px}
+  .animo-footer-recommended .animo-footer-logo img{width:280px!important;max-width:85vw!important}
+  .animo-footer-recommended .footer-company-left>p{font-size:16px}
+  .animo-footer-recommended .footer-company-left h2{font-size:27px;margin-bottom:26px}
+  .animo-footer-recommended .footer-company-left h3{font-size:19px}
+  .animo-footer-recommended .footer-company-value{font-size:16px}
+  .animo-footer-recommended .footer-address-row{align-items:flex-start;gap:20px}
+  .animo-footer-recommended .footer-address-row .footer-company-value{max-width:calc(100% - 70px)}
+  .animo-footer-recommended .footer-map-pin{flex-basis:60px;width:60px;height:85px}
+  .animo-footer-recommended .map-pin-shape{width:48px;height:65px}
+  .animo-footer-recommended .map-pin-shape:before{width:22px;height:22px;left:11px;top:11px}
+  .animo-footer-recommended .map-pin-shape:after{width:30px;left:7px}
+}
+@media(max-width:480px){
+  .animo-footer-recommended .footer-address-row{display:block}
+  .animo-footer-recommended .footer-map-pin{margin:18px 0 0 4px}
+}
