@@ -633,3 +633,37 @@ footer .footer-tokopedia-logo{
   .catalog-product-card .product-info h3{font-size:16px!important}
   .catalog-product-card .product-info p{font-size:13px!important}
 }
+
+
+/* STATIC PRODUCT DETAIL */
+.static-product-detail{max-width:1180px;margin:0 auto;padding:56px 24px 90px;min-height:65vh}
+.detail-breadcrumb{margin-bottom:24px}
+.detail-breadcrumb a{color:var(--green,#16834a);font-weight:700;text-decoration:none}
+.static-detail-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:56px;align-items:start}
+.detail-photo-panel{position:sticky;top:24px}
+.detail-photo{background:linear-gradient(145deg,#f8fbf9,#eef5f1);border:1px solid #e2ebe6;border-radius:28px;min-height:560px;display:flex;align-items:center;justify-content:center;padding:38px;box-shadow:0 18px 50px rgba(18,65,43,.08)}
+.detail-photo img{width:100%;height:480px;object-fit:contain;mix-blend-mode:multiply;filter:contrast(1.04) saturate(1.04)}
+.detail-photo-note{font-size:13px;color:#6d7b73;margin-top:12px}
+.detail-copy{padding:20px 0}
+.detail-copy>small{text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#16834a}
+.detail-copy h1{font-size:clamp(32px,4vw,54px);line-height:1.05;margin:14px 0 20px;letter-spacing:-.035em}
+.detail-copy>p{font-size:18px;line-height:1.75;color:#53615a;margin-bottom:22px}
+.detail-price{font-size:25px;font-weight:850;color:#111;margin:20px 0 28px}
+.detail-actions{display:flex;flex-wrap:wrap;gap:12px}
+.detail-actions .btn{min-height:48px}
+.detail-shop{border:1px solid #d7e2dc!important;background:#fff!important;color:#163126!important}
+.detail-note{margin-top:28px;padding:18px 20px;border-left:4px solid #16834a;background:#f4f8f5;color:#58655f;line-height:1.65;border-radius:0 14px 14px 0}
+.detail-loading,.detail-not-found{text-align:center;padding:100px 20px}
+.detail-not-found h1{font-size:42px;margin-bottom:10px}
+.product-card-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+.product-card-actions .text-link{margin-top:0}
+@media(max-width:850px){
+ .static-product-detail{padding:34px 18px 65px}
+ .static-detail-grid{grid-template-columns:1fr;gap:25px}
+ .detail-photo-panel{position:static}
+ .detail-photo{min-height:360px;padding:24px;border-radius:22px}
+ .detail-photo img{height:320px}
+ .detail-copy{padding:4px 0}
+ .detail-copy h1{font-size:34px}
+ .detail-copy>p{font-size:16px}
+}
