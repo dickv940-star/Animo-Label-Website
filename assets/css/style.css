@@ -1002,3 +1002,16 @@ footer .footer-tokopedia-logo{
   border:1px solid #e0ece5;
   color:#32714d!important;
 }
+
+/* Shared premium polish for CMS-backed pages */
+.header-search-submit{font-size:12px}
+.main-nav a.active{color:var(--green-dark)}
+.category-strip{position:relative;z-index:10}
+.category-strip-inner{scrollbar-width:none}.category-strip-inner::-webkit-scrollbar{display:none}
+.pagehead{border-bottom:1px solid #e8efeb}
+.product-card{border-radius:18px}
+.product-card .product-info{padding:20px}
+.empty-state{max-width:760px;margin:40px auto;padding:55px 30px;text-align:center;background:#fff;border:1px dashed #cddbd3;border-radius:20px}
+.pagination{display:flex;justify-content:space-between;align-items:center;gap:15px;margin:38px auto 0;max-width:1500px}
+.pagination>div{display:flex;gap:7px}.pagination a{padding:9px 13px;border:1px solid var(--line);border-radius:10px;background:#fff;font-weight:800}.pagination a.active{background:var(--ink-strong);color:#fff;border-color:var(--ink-strong)}
+@media(max-width:850px){.pagination{flex-wrap:wrap}.pagination>div{order:3;width:100%;justify-content:center}.pagination>a{font-size:13px}}
