@@ -848,3 +848,52 @@
 .premium-category-grid .premium-category.category-no-image:after{
   background:linear-gradient(0deg,rgba(5,29,19,.72),rgba(5,29,19,.02) 65%)!important;
 }
+
+
+/* ===== MARKETPLACE — LOGO LEBIH MENONJOL ===== */
+.premium-marketplace-links{
+  gap:18px!important;
+}
+.premium-marketplace-links a{
+  min-height:110px!important;
+  padding:16px 20px!important;
+  gap:18px!important;
+  border-radius:16px!important;
+}
+.premium-marketplace-links img{
+  width:120px!important;
+  height:68px!important;
+  object-fit:contain!important;
+  flex:0 0 120px!important;
+}
+.premium-marketplace-links b{
+  font-size:16px!important;
+}
+.premium-marketplace-links small{
+  font-size:11px!important;
+  margin-top:5px!important;
+}
+@media(max-width:700px){
+  .premium-marketplace-links{
+    gap:14px!important;
+  }
+  .premium-marketplace-links a{
+    min-height:96px!important;
+    padding:14px 16px!important;
+  }
+  .premium-marketplace-links img{
+    width:105px!important;
+    height:60px!important;
+    flex:0 0 105px!important;
+  }
+}
+@media(max-width:430px){
+  .premium-marketplace-links a{
+    min-height:92px!important;
+  }
+  .premium-marketplace-links img{
+    width:95px!important;
+    height:56px!important;
+    flex-basis:95px!important;
+  }
+}
