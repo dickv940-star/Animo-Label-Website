@@ -7,6 +7,98 @@
 <meta name="description" content="Animo Label menyediakan label thermal, semicoated, sticker, barcode, numbering dan kebutuhan label bisnis.">
 <link rel="stylesheet" href="assets/css/style.css?v=20260929">
 <link rel="stylesheet" href="assets/css/home-premium.css?v=20260930d">
+<style>
+/* KATEGORI PRODUK UNGGULAN — tampil konsisten seperti kartu PRODUK PILIHAN */
+#kategori{background:#fff}
+#kategori .premium-section-head{margin-bottom:30px}
+#kategori .premium-section-head h2{max-width:760px}
+#kategori .premium-category-grid{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:18px;
+  align-items:stretch;
+}
+#kategori .premium-category,
+#kategori .premium-category.category-featured{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:flex-start;
+  min-width:0;
+  min-height:0;
+  overflow:hidden;
+  color:#183b2b;
+  background:#fff;
+  border:1px solid #dfeae4;
+  border-radius:18px;
+  box-shadow:0 7px 22px rgba(18,59,42,.045);
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+  grid-row:auto;
+  grid-column:auto;
+}
+#kategori .premium-category:hover{
+  transform:translateY(-5px);
+  border-color:#c7ddd0;
+  box-shadow:0 18px 42px rgba(18,59,42,.11);
+}
+#kategori .premium-category img{
+  position:relative;
+  inset:auto;
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  background:#f7faf8;
+  transition:transform .45s ease;
+  filter:none;
+}
+#kategori .premium-category:hover img{transform:scale(1.035)}
+#kategori .premium-category:after{display:none}
+#kategori .premium-category span{
+  position:relative;
+  z-index:2;
+  display:block;
+  width:auto;
+  padding:17px 17px 19px;
+  background:#fff;
+}
+#kategori .premium-category b{
+  display:block;
+  margin:0;
+  color:#163b2b;
+  font-size:17px;
+  line-height:1.28;
+  font-weight:850;
+}
+#kategori .premium-category small{
+  display:block;
+  margin-top:7px;
+  color:#718078;
+  font-size:12px;
+  line-height:1.5;
+}
+#kategori .premium-category:focus-visible{
+  outline:3px solid rgba(22,131,74,.22);
+  outline-offset:3px;
+}
+@media(max-width:1200px){
+  #kategori .premium-category-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:850px){
+  #kategori .premium-category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  #kategori .premium-category span{padding:15px}
+  #kategori .premium-category b{font-size:16px}
+}
+@media(max-width:560px){
+  #kategori .premium-category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+  #kategori .premium-category{border-radius:14px}
+  #kategori .premium-category span{padding:12px 12px 14px}
+  #kategori .premium-category b{font-size:14px}
+  #kategori .premium-category small{font-size:10.5px;margin-top:5px}
+}
+</style>
 </head>
 <body>
 
