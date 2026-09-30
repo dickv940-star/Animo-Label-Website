@@ -17,9 +17,12 @@
 const SHOP="https://shopee.co.id/animolabel";
 const P="assets/produk/";
 const IMG={
- thermal:"assets/produk/produk-label-thermal-01 (7).jpg",
+ thermal:"assets/produk/LABEL THERMAL 70 X 50 MM — ISI 1.000 PCS.png",
+ thermal80x50:"assets/produk/LABEL THERMAL 80 X 50 MM — ISI 1.000 PCS.png",
+ thermal65x40:"assets/produk/LABEL THERMAL 65 X 40 MM — ISI 1.000 PCS.png",
+ thermal50x60:"assets/produk/LABEL THERMAL 50 X 60 MM — ISI 1.000 PCS.png",
  thermal33x15:"assets/produk/label thermal 33x15mm.jpg",
- thermal33x19:"assets/produk/produk-label-thermal-01 (7).jpg",
+ thermal33x19:"",
  semicoated:"assets/produk/label semicoated warna.jpg",
  semicoated2:"assets/produk/label semicoated 2 line.jpg",
  roundColor:"assets/produk/Stiker Bulat Warna.jpg",
@@ -37,14 +40,14 @@ const IMG={
 const ANIMO_CATALOG=[
 /* LABEL THERMAL */
 {id:1,cat:"Label Thermal",name:"LABEL THERMAL 70 X 50 MM — ISI 1.000 PCS",desc:"Direct Thermal untuk barcode dan kebutuhan label harian.",price:"Rp27.040–Rp55.000",img:IMG.thermal,url:"https://shopee.co.id/LABEL-THERMAL-70X50-1.000-Pcs-BARCODE-Thermal-70-X-50-MM-70-mm-X-50-mm-7-x-5-cm-ISI-1000-PCS-i.708541841.24527185171"},
-{id:2,cat:"Label Thermal",name:"LABEL THERMAL 80 X 50 MM — ISI 1.000 PCS",desc:"Stiker thermal 8 × 5 cm untuk printer barcode.",price:"Rp28.500–Rp58.200",img:IMG.thermal,url:SHOP},
-{id:3,cat:"Label Thermal",name:"LABEL THERMAL 65 X 40 MM — ISI 1.000 PCS",desc:"Direct Thermal 65 × 40 mm.",price:"Rp40.000",img:IMG.thermal,url:"https://shopee.co.id/LABEL-THERMAL-65-X-40-isi-1000-PCS-Direct-Thermal-65X40-MM-Label-Barcode-Thermal-65X40-MM-ISI-1.000-PCS-i.708541841.50703401473"},
-{id:4,cat:"Label Thermal",name:"LABEL THERMAL 50 X 60 MM — ISI 1.000 PCS",desc:"Direct Thermal 5 × 6 cm.",price:"Rp23.000–Rp81.000",img:IMG.thermal,url:"https://shopee.co.id/LABEL-THERMAL-50X60-BARCODE-Thermal-50-X-60-MM-Direct-Thermal-50-X-60-mm-Stiker-Thermal-5-x-6-cm-ISI-1000-PCS-i.708541841.25180010774"},
-{id:5,cat:"Label Thermal",name:"LABEL THERMAL 80 X 40 MM — ISI 1.000 PCS",desc:"Direct Thermal 8 × 4 cm untuk barcode.",price:"Rp53.000",img:IMG.thermal,url:SHOP},
-{id:6,cat:"Label Thermal",name:"LABEL THERMAL 80 X 30 MM — ISI 1.000 PCS",desc:"Direct Thermal 8 × 3 cm.",price:"Rp40.800",img:IMG.thermal,url:SHOP},
-{id:7,cat:"Label Thermal",name:"LABEL THERMAL 33 X 19 MM — 2 LINE / 3 LINE",desc:"Label barcode thermal 33 × 19 mm. Tersedia pilihan 2 line dan 3 line.",price:"Rp28.000–Rp98.000",img:IMG.thermal33x19,url:"https://shopee.co.id/LABEL-THERMAL-33-X-19-Label-Barcode-Direct-Thermal-33X19-mm-Stiker-Thermal-33-x-19-2-Line-3-lINE-isi-10.000-pcs-i.708541841.26950989497"},
+{id:2,cat:"Label Thermal",name:"LABEL THERMAL 80 X 50 MM — ISI 1.000 PCS",desc:"Stiker thermal 8 × 5 cm untuk printer barcode.",price:"Rp28.500–Rp58.200",img:IMG.thermal80x50,url:SHOP},
+{id:3,cat:"Label Thermal",name:"LABEL THERMAL 65 X 40 MM — ISI 1.000 PCS",desc:"Direct Thermal 65 × 40 mm.",price:"Rp40.000",img:IMG.thermal65x40,url:"https://shopee.co.id/LABEL-THERMAL-65-X-40-isi-1000-PCS-Direct-Thermal-65X40-MM-Label-Barcode-Thermal-65X40-MM-ISI-1.000-PCS-i.708541841.50703401473"},
+{id:4,cat:"Label Thermal",name:"LABEL THERMAL 50 X 60 MM — ISI 1.000 PCS",desc:"Direct Thermal 5 × 6 cm.",price:"Rp23.000–Rp81.000",img:IMG.thermal50x60,url:"https://shopee.co.id/LABEL-THERMAL-50X60-BARCODE-Thermal-50-X-60-MM-Direct-Thermal-50-X-60-mm-Stiker-Thermal-5-x-6-cm-ISI-1000-PCS-i.708541841.25180010774"},
+{id:5,cat:"Label Thermal",name:"LABEL THERMAL 80 X 40 MM — ISI 1.000 PCS",desc:"Direct Thermal 8 × 4 cm untuk barcode.",price:"Rp53.000",img:"",url:SHOP},
+{id:6,cat:"Label Thermal",name:"LABEL THERMAL 80 X 30 MM — ISI 1.000 PCS",desc:"Direct Thermal 8 × 3 cm.",price:"Rp40.800",img:"",url:SHOP},
+{id:7,cat:"Label Thermal",name:"LABEL THERMAL 33 X 19 MM — 2 LINE / 3 LINE",desc:"Label barcode thermal 33 × 19 mm. Tersedia pilihan 2 line dan 3 line.",price:"Rp28.000–Rp98.000",img:"",url:"https://shopee.co.id/LABEL-THERMAL-33-X-19-Label-Barcode-Direct-Thermal-33X19-mm-Stiker-Thermal-33-x-19-2-Line-3-lINE-isi-10.000-pcs-i.708541841.26950989497"},
 {id:8,cat:"Label Thermal",name:"LABEL THERMAL 33 X 15 MM — 2 LINE / 3 LINE",desc:"Label barcode direct thermal ukuran kecil, tersedia beberapa jumlah isi.",price:"Rp25.000–Rp93.000",img:IMG.thermal33x15,url:"https://shopee.co.id/LABEL-THERMAL-33-X-15-Label-Barcode-Direct-Thermal-33x15-mm-Stiker-Thermal-33x15-2-Line-3-lINE-isi-10.000-pcs-i.708541841.27400984071"},
-{id:9,cat:"Label Thermal",name:"LABEL THERMAL 78 X 100 MM",desc:"Kertas stiker thermal untuk barcode dan pengiriman.",price:"Rp12.000",img:IMG.thermal,url:SHOP},
+{id:9,cat:"Label Thermal",name:"LABEL THERMAL 78 X 100 MM",desc:"Kertas stiker thermal untuk barcode dan pengiriman.",price:"Rp12.000",img:"",url:SHOP},
 /* LABEL SEMICOATED */
 {id:10,cat:"Label Semicoated",name:"LABEL SEMICOATED 80 X 50 MM — ISI 1.000 PCS",desc:"Label barcode semicoated 8 × 5 cm. Memerlukan ribbon saat dicetak.",price:"Rp26.000–Rp50.000",img:IMG.semicoated,url:"https://shopee.co.id/LABEL-SEMICOATED-80-X-50-1000-PCS-Label-Barcode-Semicoated-80x50-MM-Stiker-Semicoated-8-x-5-cm-isi-1000-pcs-i.708541841.25000764796"},
 {id:11,cat:"Label Semicoated",name:"LABEL SEMICOATED 60 X 40 MM — ISI 1.000 PCS",desc:"Label barcode semicoated 6 × 4 cm.",price:"Rp31.000",img:IMG.semicoated,url:SHOP},
@@ -67,7 +70,7 @@ const ANIMO_CATALOG=[
 {id:24,cat:"Label Fashion",name:"LABEL SIZE & IDENTITAS PRODUK",desc:"Pilihan label untuk kebutuhan garment, fashion, dan retail.",price:"Konsultasi",img:"",url:SHOP},
 /* STIKER HURUF */
 {id:25,cat:"Stiker Huruf",name:"STIKER HURUF — ABJAD 8 MM",desc:"Stiker huruf abjad untuk penandaan dan kebutuhan identifikasi.",price:"Rp12.100",img:IMG.huruf,url:"https://shopee.co.id/STIKER-HURUF-ABJAD-8-MM-i.708541841.24951486737"},
-{id:26,cat:"Label Thermal",name:"LABEL THERMAL 100 X 100 MM — ISI 500 PCS",desc:"Direct thermal 10 × 10 cm untuk kebutuhan label dan barcode.",price:"Rp53.000–Rp58.000",img:IMG.thermal,url:"https://shopee.co.id/LABEL-THERMAL-100-X-100-isi-500-pcs-Label-Barcode-Direct-Thermal-100X100-mm-Stiker-Thermal-10-x-10-cm-isi-500-PCS-i.708541841.18968162251"},
+{id:26,cat:"Label Thermal",name:"LABEL THERMAL 100 X 100 MM — ISI 500 PCS",desc:"Direct thermal 10 × 10 cm untuk kebutuhan label dan barcode.",price:"Rp53.000–Rp58.000",img:"",url:"https://shopee.co.id/LABEL-THERMAL-100-X-100-isi-500-pcs-Label-Barcode-Direct-Thermal-100X100-mm-Stiker-Thermal-10-x-10-cm-isi-500-PCS-i.708541841.18968162251"},
 {id:27,cat:"Stiker Bulat",name:"STIKER ONLY 25 MM — PILIHAN NOMINAL",desc:"Stiker bulat 25 mm dengan pilihan nominal 5K sampai 100K.",price:"Rp10.300",img:"",url:"https://shopee.co.id/STIKER-ONLY-25-MM-2-5-CM-5k-10k-15k-20k-25k-30k-50k-100k-i.708541841.24802248744"},
 {id:28,cat:"Stiker Bulat",name:"STIKER BULAT ANGKA 30 MM",desc:"Stiker angka bulat 3 cm dengan pilihan angka 1–12.",price:"Rp13.000",img:IMG.roundNumber,url:"https://shopee.co.id/STIKER-BULAT-ANGKA-30-mm-Stiker-Angka-Bulat-3-CM-Stiker-Warna-Angka-1-2-3-4-5-6-7-8-9-10-11-12-i.708541841.48655027483"},
 {id:29,cat:"Label Numbering",name:"STIKER NUMBERING BLITZ 2234 / 2253",desc:"Sticker numbering dengan lem lebih lengket untuk kebutuhan identifikasi.",price:"Rp15.600",img:"",url:"https://shopee.co.id/LABEL-STIKER-NUMBERING-BLITZ-2234-2253-LEM-LEBIH-LENGKET-i.708541841.23120588817"},
