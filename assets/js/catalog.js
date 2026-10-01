@@ -43,11 +43,8 @@ const ANIMO_CATALOG=[
 {id:2,cat:"Label Thermal",name:"LABEL THERMAL 80 X 50 MM — ISI 1.000 PCS",desc:"Stiker thermal 8 × 5 cm untuk printer barcode.",price:"Rp28.500–Rp58.200",img:IMG.thermal80x50,url:SHOP},
 {id:3,cat:"Label Thermal",name:"LABEL THERMAL 65 X 40 MM — ISI 1.000 PCS",desc:"Direct Thermal 65 × 40 mm.",price:"Rp40.000",img:IMG.thermal65x40,url:"https://shopee.co.id/LABEL-THERMAL-65-X-40-isi-1000-PCS-Direct-Thermal-65X40-MM-Label-Barcode-Thermal-65X40-MM-ISI-1.000-PCS-i.708541841.50703401473"},
 {id:4,cat:"Label Thermal",name:"LABEL THERMAL 50 X 60 MM — ISI 1.000 PCS",desc:"Direct Thermal 5 × 6 cm.",price:"Rp23.000–Rp81.000",img:IMG.thermal50x60,url:"https://shopee.co.id/LABEL-THERMAL-50X60-BARCODE-Thermal-50-X-60-MM-Direct-Thermal-50-X-60-mm-Stiker-Thermal-5-x-6-cm-ISI-1000-PCS-i.708541841.25180010774"},
-{id:5,cat:"Label Thermal",name:"LABEL THERMAL 80 X 40 MM — ISI 1.000 PCS",desc:"Direct Thermal 8 × 4 cm untuk barcode.",price:"Rp53.000",img:"",url:SHOP},
-{id:6,cat:"Label Thermal",name:"LABEL THERMAL 80 X 30 MM — ISI 1.000 PCS",desc:"Direct Thermal 8 × 3 cm.",price:"Rp40.800",img:"",url:SHOP},
 {id:7,cat:"Label Thermal",name:"LABEL THERMAL 33 X 19 MM — 2 LINE / 3 LINE",desc:"Label barcode thermal 33 × 19 mm. Tersedia pilihan 2 line dan 3 line.",price:"Rp28.000–Rp98.000",img:"",url:"https://shopee.co.id/LABEL-THERMAL-33-X-19-Label-Barcode-Direct-Thermal-33X19-mm-Stiker-Thermal-33-x-19-2-Line-3-lINE-isi-10.000-pcs-i.708541841.26950989497"},
 {id:8,cat:"Label Thermal",name:"LABEL THERMAL 33 X 15 MM — 2 LINE / 3 LINE",desc:"Label barcode direct thermal ukuran kecil, tersedia beberapa jumlah isi.",price:"Rp25.000–Rp93.000",img:IMG.thermal33x15,url:"https://shopee.co.id/LABEL-THERMAL-33-X-15-Label-Barcode-Direct-Thermal-33x15-mm-Stiker-Thermal-33x15-2-Line-3-lINE-isi-10.000-pcs-i.708541841.27400984071"},
-{id:9,cat:"Label Thermal",name:"LABEL THERMAL 78 X 100 MM",desc:"Kertas stiker thermal untuk barcode dan pengiriman.",price:"Rp12.000",img:"",url:SHOP},
 /* LABEL SEMICOATED */
 {id:10,cat:"Label Semicoated",name:"LABEL SEMICOATED 80 X 50 MM — ISI 1.000 PCS",desc:"Label barcode semicoated 8 × 5 cm. Memerlukan ribbon saat dicetak.",price:"Rp26.000–Rp50.000",img:IMG.semicoated,url:"https://shopee.co.id/LABEL-SEMICOATED-80-X-50-1000-PCS-Label-Barcode-Semicoated-80x50-MM-Stiker-Semicoated-8-x-5-cm-isi-1000-pcs-i.708541841.25000764796"},
 {id:11,cat:"Label Semicoated",name:"LABEL SEMICOATED 60 X 40 MM — ISI 1.000 PCS",desc:"Label barcode semicoated 6 × 4 cm.",price:"Rp31.000",img:IMG.semicoated,url:SHOP},
@@ -85,9 +82,9 @@ window.ANIMO_CATALOG=ANIMO_CATALOG;
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
 function renderCatalog(target,filter="",query=""){
  const q=query.trim().toLowerCase();
- const list=ANIMO_CATALOG.filter(p=>(filter==="Semua"||!filter||p.cat===filter)&&(!q||[p.name,p.cat,p.desc].join(" ").toLowerCase().includes(q)));
+ const list=ANIMO_CATALOG.filter(p=>p.url&&p.url!==SHOP&&(filter==="Semua"||!filter||p.cat===filter)&&(!q||[p.name,p.cat,p.desc].join(" ").toLowerCase().includes(q)));
  target.innerHTML=list.map(p=>'<article class="product-card catalog-product-card"><a class="product-image" href="produk-detail.html?id='+p.id+'">'+(p.img?'<img src="'+p.img+'" alt="'+escapeHtml(p.name)+'" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'assets/img-placeholder.svg\'">' : '')+'</a><div class="product-info"><small>'+escapeHtml(p.cat)+'</small><h3>'+escapeHtml(p.name)+'</h3><p>'+escapeHtml(p.desc)+'</p><strong>'+escapeHtml(p.price)+'</strong><div class="product-card-actions"><a class="text-link" href="produk-detail.html?id='+p.id+'">Detail produk →</a><a class="text-link" href="'+p.url+'" target="_blank" rel="noopener">Shopee →</a></div></div></article>').join("")||'<div class="empty-state"><h3>Produk tidak ditemukan</h3><p>Coba kata kunci atau kategori lainnya.</p></div>';
- const count=target.closest(".catalog-shell")?.querySelector("[data-catalog-count]");if(count)count.textContent=list.length+" produk";
+ const count=target.closest(".catalog-shell")?.querySelector("[data-catalog-count]");if(count)count.textContent=list.length+" produk terverifikasi Shopee";
 }
 document.addEventListener("DOMContentLoaded",()=>{
  const grid=document.querySelector("[data-catalog]");if(!grid)return;
