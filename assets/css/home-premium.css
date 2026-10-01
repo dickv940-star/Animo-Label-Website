@@ -2699,3 +2699,109 @@ flex-basis:95px!important;
 }
 
 }
+
+/* ===== FINAL TYPOGRAPHY & LOGO ADJUSTMENT ===== */
+/* Teks utama dibuat sedikit lebih tegas tanpa menjadi terlalu berat. */
+body {
+font-weight:500!important;
+}
+
+.header .main-nav,
+.premium-nav {
+font-weight:750!important;
+}
+
+.header-search input {
+font-weight:500!important;
+}
+
+.premium-hero-copy h1 {
+font-weight:800!important;
+}
+
+.premium-hero-copy p {
+font-weight:500!important;
+}
+
+.premium-section-head h2,
+.premium-info-copy h2,
+.premium-marketplace h2,
+.premium-cta h2 {
+font-weight:800!important;
+}
+
+.premium-section-head small,
+.premium-info-copy small,
+.premium-marketplace small,
+.premium-cta small {
+font-weight:800!important;
+}
+
+.premium-category b,
+.premium-product h3,
+.premium-product strong {
+font-weight:800!important;
+}
+
+.quick-benefits strong,
+.footer-benefit strong,
+.footer-info-card h2,
+.footer-info-row strong,
+.footer-marketplace-title {
+font-weight:800!important;
+}
+
+.footer-tagline,
+.footer-info-row p,
+.footer-benefit small {
+font-weight:500!important;
+}
+
+/* Logo header: sedikit lebih besar. */
+.premium-header .site-logo {
+width:170px!important;
+max-height:56px!important;
+}
+
+/* Logo footer: sedikit diperkecil agar lebih proporsional. */
+.animo-footer-recommended .animo-footer-logo img {
+width:215px!important;
+max-width:100%!important;
+max-height:54px!important;
+}
+
+@media(max-width:1050px) {
+.premium-header .site-logo {
+width:162px!important;
+max-height:54px!important;
+}
+
+.animo-footer-recommended .animo-footer-logo img {
+width:205px!important;
+max-height:52px!important;
+}
+}
+
+@media(max-width:760px) {
+.premium-header .site-logo {
+width:150px!important;
+max-height:50px!important;
+}
+
+.animo-footer-recommended .animo-footer-logo img {
+width:195px!important;
+max-height:50px!important;
+}
+}
+
+@media(max-width:430px) {
+.premium-header .site-logo {
+width:142px!important;
+max-height:48px!important;
+}
+
+.animo-footer-recommended .animo-footer-logo img {
+width:185px!important;
+max-height:48px!important;
+}
+}
