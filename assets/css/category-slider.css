@@ -1,0 +1,218 @@
+/* =========================================================
+   ANIMO LABEL — KATEGORI PRODUK HOMEPAGE
+   ---------------------------------------------------------
+   Khusus slider "Kategori Produk Unggulan".
+========================================================= */
+
+#kategori {
+  background: #fff;
+}
+
+#kategori .premium-section-head {
+  margin-bottom: 30px;
+}
+
+#kategori .premium-section-head h2 {
+  max-width: 760px;
+}
+
+#kategori .premium-category-slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+#kategori .premium-category-grid {
+  display: flex;
+  gap: 18px;
+  align-items: stretch;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 4px 2px 16px;
+  margin: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#kategori .premium-category-grid::-webkit-scrollbar {
+  display: none;
+}
+
+#kategori .premium-category {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex: 0 0 calc((100% - 72px) / 5);
+  min-width: 0;
+  overflow: hidden;
+  color: #183b2b;
+  background: #fff;
+  border: 1px solid #dfeae4;
+  border-radius: 18px;
+  box-shadow: 0 7px 22px rgba(18, 59, 42, .045);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+  scroll-snap-align: start;
+}
+
+#kategori .premium-category:hover {
+  transform: translateY(-5px);
+  border-color: #c7ddd0;
+  box-shadow: 0 18px 42px rgba(18, 59, 42, .11);
+}
+
+#kategori .premium-category img {
+  position: relative;
+  inset: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #f7faf8;
+  transition: transform .45s ease;
+  filter: none;
+}
+
+#kategori .premium-category:hover img {
+  transform: scale(1.035);
+}
+
+#kategori .premium-category::after {
+  display: none;
+}
+
+#kategori .premium-category span {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: auto;
+  padding: 17px 17px 19px;
+  background: #fff;
+}
+
+#kategori .premium-category b {
+  display: block;
+  margin: 0;
+  color: #163b2b;
+  font-size: 17px;
+  line-height: 1.28;
+  font-weight: 850;
+}
+
+#kategori .premium-category small {
+  display: block;
+  margin-top: 7px;
+  color: #718078;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+#kategori .premium-category:focus-visible {
+  outline: 3px solid rgba(22, 131, 74, .22);
+  outline-offset: 3px;
+}
+
+#kategori .category-slide-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+#kategori .category-slide-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #d8e5dd;
+  border-radius: 50%;
+  background: #fff;
+  color: #0d5c34;
+  font-size: 19px;
+  cursor: pointer;
+  box-shadow: 0 5px 16px rgba(18, 59, 42, .07);
+  transition: .2s;
+}
+
+#kategori .category-slide-btn:hover {
+  background: #16834a;
+  color: #fff;
+  border-color: #16834a;
+  transform: translateY(-2px);
+}
+
+#kategori .category-slide-progress {
+  height: 3px;
+  background: #e7eee9;
+  border-radius: 99px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+#kategori .category-slide-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: #16834a;
+  border-radius: 99px;
+  transition: width .3s ease;
+}
+
+@media (max-width: 1200px) {
+  #kategori .premium-category {
+    flex-basis: calc((100% - 36px) / 3);
+  }
+}
+
+@media (max-width: 850px) {
+  #kategori .premium-category-grid {
+    gap: 14px;
+  }
+
+  #kategori .premium-category {
+    flex-basis: calc((100% - 14px) / 2);
+  }
+
+  #kategori .premium-category span {
+    padding: 15px;
+  }
+
+  #kategori .premium-category b {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  #kategori .premium-category-grid {
+    gap: 11px;
+    padding-bottom: 13px;
+  }
+
+  #kategori .premium-category {
+    flex-basis: calc((100% - 11px) / 2);
+    border-radius: 14px;
+  }
+
+  #kategori .premium-category span {
+    padding: 12px 12px 14px;
+  }
+
+  #kategori .premium-category b {
+    font-size: 14px;
+  }
+
+  #kategori .premium-category small {
+    font-size: 10.5px;
+    margin-top: 5px;
+  }
+
+  #kategori .category-slide-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 17px;
+  }
+}
