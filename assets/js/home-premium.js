@@ -63,76 +63,18 @@ document.addEventListener("DOMContentLoaded", () => {
       syncSearchState();
     });
 
-  /* Banner text detection */
-  async function hideTextWhenBannerAlreadyContainsText(slide) {
-    if (!slide || slide.dataset.textChecked) {
-      return;
-    }
-
-    slide.dataset.textChecked = "1";
-
-    const copy = slide.querySelector(".premium-hero-copy");
-
-    if (!copy) {
-      return;
-    }
-
-    copy.classList.add("banner-text-checking");
-
-    const source = slide.dataset.bannerImage || "";
-    let containsText = false;
-
-    try {
-      if (/\.svg(?:[?#]|$)/i.test(source)) {
-        const response = await fetch(source, {
-          cache: "no-store"
-        });
-
-        const svg = await response.text();
-
-        containsText =
-          /<(?:text|tspan|title|desc)\b/i.test(svg) &&
-          (svg.match(/<(?:text|tspan)\b/gi) || [])
-            .length > 0;
-      } else if (window.Tesseract) {
-        const result = await Tesseract.recognize(
-          source,
-          "eng",
-          {
-            logger: () => {}
-          }
-        );
-
-        const text = (result?.data?.text || "")
-          .replace(/\s+/g, " ")
-          .trim();
-
-        const confidence =
-          Number(result?.data?.confidence || 0);
-
-        const words = text
-          .split(" ")
-          .filter(Boolean);
-
-        containsText =
-          confidence >= 52 &&
-          words.length >= 2 &&
-          text.length >= 8;
-      }
-    } catch (error) {
-      containsText = false;
-    }
-
-    copy.classList.remove("banner-text-checking");
-
-    copy.classList.toggle(
-      "banner-text-auto-hidden",
-      containsText
-    );
-  }
-
+  /* Banner tampil langsung — tanpa OCR/Tesseract atau request tambahan. */
   slides.forEach((slide) => {
-    hideTextWhenBannerAlreadyContainsText(slide);
+    slide.classList.remove("banner-text-checking", "banner-text-auto-hidden");
+  });
+
+  /* Preload semua banner agar perpindahan slide tidak menunggu network. */
+  slides.forEach((slide) => {
+    const source = slide.dataset.bannerImage || "";
+    if (!source) return;
+    const image = new Image();
+    image.decoding = "async";
+    image.src = source;
   });
 
   if (slides.length < 2) {
