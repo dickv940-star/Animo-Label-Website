@@ -1,4 +1,218 @@
-document.addEventListener('DOMContentLoaded',()=>{const slides=[...document.querySelectorAll('.premium-slide')];const dots=document.querySelector('.premium-dots');const prev=document.querySelector('.premium-prev');const next=document.querySelector('.premium-next');const nav=document.querySelector('.premium-nav');const menu=document.querySelector('.mobile-menu-btn');if(menu&&nav){menu.addEventListener('click',()=>nav.classList.toggle('open'));nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')))}document.querySelectorAll('.premium-search').forEach(f=>{const i=f.querySelector('input'),c=f.querySelector('.header-search-clear');if(!i)return;const sync=()=>f.classList.toggle('has-value',!!i.value.trim());i.addEventListener('input',sync);c?.addEventListener('click',()=>{i.value='';sync();i.focus()});sync()});
-const hideIfImageHasText=async slide=>{if(!slide||slide.dataset.textChecked)return;slide.dataset.textChecked='1';const copy=slide.querySelector('.premium-hero-copy');if(!copy)return;copy.classList.add('banner-text-checking');const src=slide.dataset.bannerImage||'';let found=false;try{if(/\\.svg(?:[?#]|$)/i.test(src)){const r=await fetch(src,{cache:'no-store'});const t=await r.text();found=/<(?:text|tspan|title|desc)\\b/i.test(t)&&((t.match(/<(?:text|tspan)\\b/gi)||[]).length>0)}else if(window.Tesseract){const result=await Tesseract.recognize(src,'eng',{logger:()=>{}});const text=(result?.data?.text||'').replace(/\\s+/g,' ').trim();const confidence=Number(result?.data?.confidence||0);const words=text.split(' ').filter(Boolean);found=confidence>=52&&words.length>=2&&text.length>=8}}catch(e){found=false}copy.classList.remove('banner-text-checking');copy.classList.toggle('banner-text-auto-hidden',found)};
-slides.forEach(s=>hideIfImageHasText(s));
-if(slides.length<2)return;let current=0,timer;slides.forEach((_,i)=>{const d=document.createElement('button');d.className='premium-dot'+(i===0?' active':'');d.type='button';d.setAttribute('aria-label','Banner '+(i+1));d.addEventListener('click',()=>go(i));dots?.appendChild(d)});const render=()=>{slides.forEach((s,i)=>s.classList.toggle('active',i===current));if(dots)[...dots.children].forEach((d,i)=>d.classList.toggle('active',i===current));hideIfImageHasText(slides[current])};const go=i=>{current=(i+slides.length)%slides.length;render();restart()};const restart=()=>{clearInterval(timer);timer=setInterval(()=>go(current+1),6000)};prev?.addEventListener('click',()=>go(current-1));next?.addEventListener('click',()=>go(current+1));document.querySelector('.premium-hero')?.addEventListener('mouseenter',()=>clearInterval(timer));document.querySelector('.premium-hero')?.addEventListener('mouseleave',restart);restart()});
+/* =========================================================
+   ANIMO LABEL — HOMEPAGE INTERACTIONS
+   ---------------------------------------------------------
+   Banner slider, mobile menu, dan pencarian header.
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = [
+    ...document.querySelectorAll(".premium-slide")
+  ];
+
+  const dots = document.querySelector(".premium-dots");
+  const previousButton = document.querySelector(".premium-prev");
+  const nextButton = document.querySelector(".premium-next");
+  const navigation = document.querySelector(".premium-nav");
+  const mobileMenu = document.querySelector(".mobile-menu-btn");
+
+  let currentSlide = 0;
+  let slideTimer;
+
+  /* Mobile navigation */
+  if (mobileMenu && navigation) {
+    mobileMenu.addEventListener("click", () => {
+      navigation.classList.toggle("open");
+    });
+
+    navigation
+      .querySelectorAll("a")
+      .forEach((link) => {
+        link.addEventListener("click", () => {
+          navigation.classList.remove("open");
+        });
+      });
+  }
+
+  /* Header product search */
+  document
+    .querySelectorAll(".premium-search")
+    .forEach((form) => {
+      const input = form.querySelector("input");
+      const clearButton =
+        form.querySelector(".header-search-clear");
+
+      if (!input) {
+        return;
+      }
+
+      function syncSearchState() {
+        form.classList.toggle(
+          "has-value",
+          Boolean(input.value.trim())
+        );
+      }
+
+      input.addEventListener("input", syncSearchState);
+
+      clearButton?.addEventListener("click", () => {
+        input.value = "";
+        syncSearchState();
+        input.focus();
+      });
+
+      syncSearchState();
+    });
+
+  /* Banner text detection */
+  async function hideTextWhenBannerAlreadyContainsText(slide) {
+    if (!slide || slide.dataset.textChecked) {
+      return;
+    }
+
+    slide.dataset.textChecked = "1";
+
+    const copy = slide.querySelector(".premium-hero-copy");
+
+    if (!copy) {
+      return;
+    }
+
+    copy.classList.add("banner-text-checking");
+
+    const source = slide.dataset.bannerImage || "";
+    let containsText = false;
+
+    try {
+      if (/\.svg(?:[?#]|$)/i.test(source)) {
+        const response = await fetch(source, {
+          cache: "no-store"
+        });
+
+        const svg = await response.text();
+
+        containsText =
+          /<(?:text|tspan|title|desc)\b/i.test(svg) &&
+          (svg.match(/<(?:text|tspan)\b/gi) || [])
+            .length > 0;
+      } else if (window.Tesseract) {
+        const result = await Tesseract.recognize(
+          source,
+          "eng",
+          {
+            logger: () => {}
+          }
+        );
+
+        const text = (result?.data?.text || "")
+          .replace(/\s+/g, " ")
+          .trim();
+
+        const confidence =
+          Number(result?.data?.confidence || 0);
+
+        const words = text
+          .split(" ")
+          .filter(Boolean);
+
+        containsText =
+          confidence >= 52 &&
+          words.length >= 2 &&
+          text.length >= 8;
+      }
+    } catch (error) {
+      containsText = false;
+    }
+
+    copy.classList.remove("banner-text-checking");
+
+    copy.classList.toggle(
+      "banner-text-auto-hidden",
+      containsText
+    );
+  }
+
+  slides.forEach((slide) => {
+    hideTextWhenBannerAlreadyContainsText(slide);
+  });
+
+  if (slides.length < 2) {
+    return;
+  }
+
+  /* Banner dots */
+  slides.forEach((slide, index) => {
+    const dot = document.createElement("button");
+
+    dot.className =
+      "premium-dot" + (index === 0 ? " active" : "");
+
+    dot.type = "button";
+
+    dot.setAttribute(
+      "aria-label",
+      `Banner ${index + 1}`
+    );
+
+    dot.addEventListener("click", () => {
+      goToSlide(index);
+    });
+
+    dots?.appendChild(dot);
+  });
+
+  function renderSlides() {
+    slides.forEach((slide, index) => {
+      slide.classList.toggle(
+        "active",
+        index === currentSlide
+      );
+    });
+
+    if (dots) {
+      [...dots.children].forEach((dot, index) => {
+        dot.classList.toggle(
+          "active",
+          index === currentSlide
+        );
+      });
+    }
+
+    hideTextWhenBannerAlreadyContainsText(
+      slides[currentSlide]
+    );
+  }
+
+  function goToSlide(index) {
+    currentSlide =
+      (index + slides.length) % slides.length;
+
+    renderSlides();
+    restartAutoplay();
+  }
+
+  function restartAutoplay() {
+    clearInterval(slideTimer);
+
+    slideTimer = setInterval(() => {
+      goToSlide(currentSlide + 1);
+    }, 6000);
+  }
+
+  previousButton?.addEventListener("click", () => {
+    goToSlide(currentSlide - 1);
+  });
+
+  nextButton?.addEventListener("click", () => {
+    goToSlide(currentSlide + 1);
+  });
+
+  const hero = document.querySelector(".premium-hero");
+
+  hero?.addEventListener("mouseenter", () => {
+    clearInterval(slideTimer);
+  });
+
+  hero?.addEventListener("mouseleave", restartAutoplay);
+
+  restartAutoplay();
+});
