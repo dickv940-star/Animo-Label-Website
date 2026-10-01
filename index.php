@@ -5,49 +5,299 @@ $title=setting('site_name','Animo Label').' — Label & Sticker Profesional';
 $banners=$pdo->query("SELECT * FROM banners WHERE active=1 ORDER BY sort_order,id DESC")->fetchAll();
 $cats=$pdo->query("SELECT * FROM categories ORDER BY sort_order,id DESC")->fetchAll();
 $featured=$pdo->query("SELECT p.*,c.name category_name FROM products p LEFT JOIN categories c ON c.id=p.category_id WHERE p.active=1 ORDER BY p.featured DESC,p.id DESC LIMIT 8")->fetchAll();
-$logo=setting('logo');$siteName=setting('site_name','Animo Label');
+$logo=setting('logo');
+$siteName=setting('site_name','Animo Label');
 $wa=wa('Halo ANIMO LABEL, saya ingin konsultasi produk label.');
-$shopee=setting('shopee','https://shopee.co.id/animolabel');$tokopedia=setting('tokopedia','https://www.tokopedia.com/animolabel');
+$shopee=setting('shopee','https://shopee.co.id/animolabel');
+$tokopedia=setting('tokopedia','https://www.tokopedia.com/animolabel');
 ?>
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title><?=e($title)?></title><meta name="description" content="<?=e(setting('description','Solusi label dan sticker untuk kebutuhan bisnis.'))?>">
-<link rel="stylesheet" href="assets/css/style.css?v=20260929"><link rel="stylesheet" href="assets/css/home-premium.css?v=20260930"></head><body>
-<div class="topbar"><div>Solusi label & sticker untuk kebutuhan bisnis</div><div class="topbar-links"><span>Senin–Sabtu</span><span>•</span><a href="<?=e($wa)?>" target="_blank">WhatsApp <?=e(setting('whatsapp','+62 811-1711-338'))?></a></div></div>
-<header class="header premium-header"><a class="brand" href="index.php"><img class="site-logo" src="<?=e($logo?:'assets/logo-animo-label.png')?>" alt="<?=e($siteName)?>"></a>
-<form class="header-search premium-search" action="produk.php" method="get"><span class="header-search-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.2 4.2"></path></svg></span><input type="search" name="q" placeholder="Cari produk label atau sticker..."><button class="header-search-clear" type="button">×</button><button class="header-search-submit" type="submit">Cari</button></form>
-<nav class="main-nav premium-nav"><a class="active" href="index.php">Beranda</a><a href="produk.php">Produk</a><a href="#kategori">Kategori</a><a href="#tentang">Tentang</a><a href="#kontak">Kontak</a></nav><a class="btn btn-dark nav-cta" href="<?=e($wa)?>" target="_blank">Konsultasi</a><button class="mobile-menu-btn" type="button">☰</button></header>
-<nav class="category-strip"><div class="category-strip-inner"><?php foreach($cats as $c):?><?php if(stripos($c['name'],'thermal')===false && stripos($c['name'],'ribbon')===false):?><a href="produk.php?category=<?=urlencode($c['id'])?>"><?=e($c['name'])?></a><?php endif;?><?php endforeach;?></div></nav>
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>
+<?=e($title)?>
+</title>
+<meta name="description" content="<?=e(setting('description','Solusi label dan sticker untuk kebutuhan bisnis.'))?>">
+<link rel="stylesheet" href="assets/css/style.css?v=20260929">
+<link rel="stylesheet" href="assets/css/home-premium.css?v=20260930">
+</head>
+<body>
+<div class="topbar">
+<div>Solusi label & sticker untuk kebutuhan bisnis</div>
+<div class="topbar-links">
+<span>Senin–Sabtu</span>
+<span>•</span>
+<a href="<?=e($wa)?>" target="_blank">WhatsApp <?=e(setting('whatsapp','+62 811-1711-338'))?>
+</a>
+</div>
+</div>
+<header class="header premium-header">
+<a class="brand" href="index.php">
+<img class="site-logo" src="<?=e($logo?:'assets/logo-animo-label.png')?>" alt="<?=e($siteName)?>">
+</a>
+<form class="header-search premium-search" action="produk.php" method="get">
+<span class="header-search-icon">
+<svg viewBox="0 0 24 24">
+<circle cx="11" cy="11" r="6.5">
+</circle>
+<path d="m16 16 4.2 4.2">
+</path>
+</svg>
+</span>
+<input type="search" name="q" placeholder="Cari produk label atau sticker...">
+<button class="header-search-clear" type="button">×</button>
+<button class="header-search-submit" type="submit">Cari</button>
+</form>
+<nav class="main-nav premium-nav">
+<a class="active" href="index.php">Beranda</a>
+<a href="produk.php">Produk</a>
+<a href="#kategori">Kategori</a>
+<a href="#tentang">Tentang</a>
+<a href="#kontak">Kontak</a>
+</nav>
+<a class="btn btn-dark nav-cta" href="<?=e($wa)?>" target="_blank">Konsultasi</a>
+<button class="mobile-menu-btn" type="button">☰</button>
+</header>
+<nav class="category-strip">
+<div class="category-strip-inner">
+<?php foreach($cats as $c):?>
+<?php if(stripos($c['name'],'thermal')===false && stripos($c['name'],'ribbon')===false):?>
+<a href="produk.php?category=<?=urlencode($c['id'])?>">
+<?=e($c['name'])?>
+</a>
+<?php endif;?>
+<?php endforeach;?>
+</div>
+</nav>
 <main>
 <section class="premium-hero" aria-label="Banner Animo Label">
-<?php if($banners):foreach($banners as $i=>$b):?><div class="premium-slide <?=$i?'':'active'?>" data-banner-auto="1" data-banner-image="<?=e($b['image']?:'assets/banner-utama.png')?>" style="background-image:url('<?=e($b['image']?:'assets/banner-utama.png')?>')"><div class="premium-slide-overlay"></div><div class="premium-hero-copy"><?php if($b['eyebrow']):?><small><?=e($b['eyebrow'])?></small><?php endif;?><h1><?=e($b['title'])?></h1><?php if($b['subtitle']):?><p><?=e($b['subtitle'])?></p><?php endif;?><?php if($b['button_text']):?><div class="hero-actions"><a class="btn btn-light" href="<?=e($b['button_url']?:'produk.php')?>"><?=e($b['button_text'])?></a><a class="hero-text-link" href="<?=e($wa)?>">Konsultasi WhatsApp →</a></div><?php endif;?></div><div class="hero-badge"><b><?=str_pad($i+1,2,'0',STR_PAD_LEFT)?></b><span>ANIMO LABEL</span></div></div><?php endforeach;else:?><div class="premium-slide active" style="background-image:url('assets/banner-utama.png')"><div class="premium-slide-overlay"></div><div class="premium-hero-copy"><small>ANIMO LABEL • LABEL & STICKER</small><h1>Label profesional untuk bisnis yang terlihat lebih rapi.</h1><p>Thermal, semicoated, sticker, barcode, numbering dan kebutuhan label bisnis.</p><div class="hero-actions"><a class="btn btn-light" href="produk.php">Lihat Katalog</a><a class="hero-text-link" href="<?=e($wa)?>">Konsultasi WhatsApp →</a></div></div></div><?php endif;?>
-<div class="premium-hero-controls"><div class="premium-dots"></div><div class="premium-arrows"><button type="button" class="premium-arrow premium-prev">←</button><button type="button" class="premium-arrow premium-next">→</button></div></div></section>
-<section class="quick-benefits"><div><strong>Produk label lengkap</strong><span>Thermal, semicoated, sticker & barcode</span></div><div><strong>Bisa konsultasi</strong><span>Sesuaikan ukuran dan kebutuhan Anda</span></div><div><strong>Pesan online</strong><span>WhatsApp, Shopee & Tokopedia</span></div></section>
-<section class="premium-section" id="kategori"><div class="premium-section-head"><div><small>KATEGORI PRODUK</small><h2>Pilih jenis label sesuai kebutuhan Anda.</h2></div><a href="produk.php" class="premium-more">Lihat semua produk →</a></div><div class="premium-category-grid"><?php foreach(array_slice($cats,0,6) as $i=>$c):?><a class="premium-category <?=$i===0?'category-featured':''?> <?=empty($c['image'])?'text-category':''?>" href="produk.php?category=<?=urlencode($c['id'])?>"><?php if($c['image']):?><img src="<?=e($c['image'])?>" alt="<?=e($c['name'])?>"><?php endif;?><span><b><?=e($c['name'])?></b><small>Pilihan produk <?=e(strtolower($c['name']))?></small></span></a><?php endforeach;?></div></section>
-<section class="premium-section premium-products-section"><div class="premium-section-head"><div><small>PRODUK PILIHAN</small><h2>Produk yang paling sering dibutuhkan bisnis.</h2></div><a href="produk.php" class="premium-more">Lihat katalog →</a></div><div class="premium-product-grid"><?php foreach(array_slice($featured,0,4) as $p):?><a class="premium-product" href="produk-detail.php?id=<?=$p['id']?>"><div class="premium-product-photo"><img src="<?=e(img($p['image']))?>" alt="<?=e($p['name'])?>"></div><div class="premium-product-copy"><small><?=e($p['category_name']?:'PRODUK')?></small><h3><?=e($p['name'])?></h3><?php if($p['description']):?><p><?=e($p['description'])?></p><?php endif;?><?php if($p['price']!==''):?><strong><?=e($p['price'])?></strong><?php endif;?><span>Lihat produk →</span></div></a><?php endforeach;?></div></section>
-<section class="premium-info" id="tentang"><div class="premium-info-image"><img src="assets/banner-utama.png" alt="<?=e($siteName)?>"></div><div class="premium-info-copy"><small>TENTANG ANIMO LABEL</small><h2><?=e(setting('about_title','Fokus pada label yang dibutuhkan bisnis.'))?></h2><p><?=e(setting('about','Animo Label menyediakan berbagai pilihan label dan sticker untuk kebutuhan operasional, barcode, pengiriman, retail, garment, produk dan branding.'))?></p><p>Kami tidak menampilkan layanan packaging atau hangtag. Fokus katalog diarahkan pada produk label dan sticker.</p><a class="btn btn-dark" href="produk.php">Jelajahi Produk</a></div></section>
-<section class="premium-marketplace"><div><small>MARKETPLACE</small><h2>Belanja ANIMO LABEL secara online.</h2><p>Temukan produk dan pilihan ukuran melalui marketplace kami.</p></div><div class="premium-marketplace-links"><a href="<?=e($shopee)?>" target="_blank"><img src="assets/shopee-logo-uploaded.svg" alt="Shopee"><span><b>Shopee</b><small>Buka toko ANIMO LABEL →</small></span></a><a href="<?=e($tokopedia)?>" target="_blank"><img src="assets/tokopedia-logo-uploaded.svg" alt="Tokopedia"><span><b>Tokopedia</b><small>Buka toko ANIMO LABEL →</small></span></a></div></section>
-<section class="premium-cta" id="kontak"><div><small>KONSULTASI PRODUK</small><h2>Belum yakin memilih ukuran atau jenis label?</h2><p>Kirim kebutuhan Anda. Kami bantu memilih produk yang sesuai.</p></div><footer class="animo-footer animo-footer-recommended">
-  <div class="footer-benefits">
-    <div><strong>Hasil Berkualitas</strong></div>
-    <div><strong>Harga Terjangkau</strong></div>
-    <div><strong>Bisa order dalam Jumlah banyak</strong></div>
-  </div>
-  <div class="footer-company">
-    <div class="footer-company-left">
-      <a href="./" class="animo-footer-logo"><img src="<?=e($logo?:'assets/logo-animo-label.png')?>" alt="<?=e($siteName)?>"></a>
-      <p>Solusi label dan sticker untuk kebutuhan bisnis Anda.</p>
-      <h2>Informasi Perusahaan</h2>
-      <h3>Nama Perusahaan</h3>
-      <p class="footer-company-value">PT. Animo Label Sentosa</p>
-      <h3>Alamat</h3>
-      <div class="footer-address-row">
-        <p class="footer-company-value">Jl. R.E. Martadinata, Ruko Permata Ancol Blok E No.3,<br>Pademangan Barat, Kecamatan Pademangan, Kota<br>Administrasi Jakarta Utara, DKI Jakarta</p>
-        <a class="footer-map-pin" href="https://maps.app.goo.gl/sMxZM1UQYcbumWow9" target="_blank" rel="noopener" aria-label="Lihat lokasi ANIMO LABEL di Google Maps">
-          <span class="map-pin-shape"><span></span></span>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="animo-footer-bottom"><span>© <?=date('Y')?> <?=e($siteName)?>. All Rights Reserved.</span></div>
+<?php if($banners):foreach($banners as $i=>$b):?>
+<div class="premium-slide <?=$i?'':'active'?>" data-banner-auto="1" data-banner-image="<?=e($b['image']?:'assets/banner-utama.png')?>" style="background-image:url('<?=e($b['image']?:'assets/banner-utama.png')?>')">
+<div class="premium-slide-overlay">
+</div>
+<div class="premium-hero-copy">
+<?php if($b['eyebrow']):?>
+<small>
+<?=e($b['eyebrow'])?>
+</small>
+<?php endif;?>
+<h1>
+<?=e($b['title'])?>
+</h1>
+<?php if($b['subtitle']):?>
+<p>
+<?=e($b['subtitle'])?>
+</p>
+<?php endif;?>
+<?php if($b['button_text']):?>
+<div class="hero-actions">
+<a class="btn btn-light" href="<?=e($b['button_url']?:'produk.php')?>">
+<?=e($b['button_text'])?>
+</a>
+<a class="hero-text-link" href="<?=e($wa)?>">Konsultasi WhatsApp →</a>
+</div>
+<?php endif;?>
+</div>
+<div class="hero-badge">
+<b>
+<?=str_pad($i+1,2,'0',STR_PAD_LEFT)?>
+</b>
+<span>ANIMO LABEL</span>
+</div>
+</div>
+<?php endforeach;else:?>
+<div class="premium-slide active" style="background-image:url('assets/banner-utama.png')">
+<div class="premium-slide-overlay">
+</div>
+<div class="premium-hero-copy">
+<small>ANIMO LABEL • LABEL & STICKER</small>
+<h1>Label profesional untuk bisnis yang terlihat lebih rapi.</h1>
+<p>Thermal, semicoated, sticker, barcode, numbering dan kebutuhan label bisnis.</p>
+<div class="hero-actions">
+<a class="btn btn-light" href="produk.php">Lihat Katalog</a>
+<a class="hero-text-link" href="<?=e($wa)?>">Konsultasi WhatsApp →</a>
+</div>
+</div>
+</div>
+<?php endif;?>
+<div class="premium-hero-controls">
+<div class="premium-dots">
+</div>
+<div class="premium-arrows">
+<button type="button" class="premium-arrow premium-prev">←</button>
+<button type="button" class="premium-arrow premium-next">→</button>
+</div>
+</div>
+</section>
+<section class="quick-benefits">
+<div>
+<strong>Produk label lengkap</strong>
+<span>Thermal, semicoated, sticker & barcode</span>
+</div>
+<div>
+<strong>Bisa konsultasi</strong>
+<span>Sesuaikan ukuran dan kebutuhan Anda</span>
+</div>
+<div>
+<strong>Pesan online</strong>
+<span>WhatsApp, Shopee & Tokopedia</span>
+</div>
+</section>
+<section class="premium-section" id="kategori">
+<div class="premium-section-head">
+<div>
+<small>KATEGORI PRODUK</small>
+<h2>Pilih jenis label sesuai kebutuhan Anda.</h2>
+</div>
+<a href="produk.php" class="premium-more">Lihat semua produk →</a>
+</div>
+<div class="premium-category-grid">
+<?php foreach(array_slice($cats,0,6) as $i=>$c):?>
+<a class="premium-category <?=$i===0?'category-featured':''?>
+<?=empty($c['image'])?'text-category':''?>" href="produk.php?category=<?=urlencode($c['id'])?>">
+<?php if($c['image']):?>
+<img src="<?=e($c['image'])?>" alt="<?=e($c['name'])?>">
+<?php endif;?>
+<span>
+<b>
+<?=e($c['name'])?>
+</b>
+<small>Pilihan produk <?=e(strtolower($c['name']))?>
+</small>
+</span>
+</a>
+<?php endforeach;?>
+</div>
+</section>
+<section class="premium-section premium-products-section">
+<div class="premium-section-head">
+<div>
+<small>PRODUK PILIHAN</small>
+<h2>Produk yang paling sering dibutuhkan bisnis.</h2>
+</div>
+<a href="produk.php" class="premium-more">Lihat katalog →</a>
+</div>
+<div class="premium-product-grid">
+<?php foreach(array_slice($featured,0,4) as $p):?>
+<a class="premium-product" href="produk-detail.php?id=<?=$p['id']?>">
+<div class="premium-product-photo">
+<img src="<?=e(img($p['image']))?>" alt="<?=e($p['name'])?>">
+</div>
+<div class="premium-product-copy">
+<small>
+<?=e($p['category_name']?:'PRODUK')?>
+</small>
+<h3>
+<?=e($p['name'])?>
+</h3>
+<?php if($p['description']):?>
+<p>
+<?=e($p['description'])?>
+</p>
+<?php endif;?>
+<?php if($p['price']!==''):?>
+<strong>
+<?=e($p['price'])?>
+</strong>
+<?php endif;?>
+<span>Lihat produk →</span>
+</div>
+</a>
+<?php endforeach;?>
+</div>
+</section>
+<section class="premium-info" id="tentang">
+<div class="premium-info-image">
+<img src="assets/banner-utama.png" alt="<?=e($siteName)?>">
+</div>
+<div class="premium-info-copy">
+<small>TENTANG ANIMO LABEL</small>
+<h2>
+<?=e(setting('about_title','Fokus pada label yang dibutuhkan bisnis.'))?>
+</h2>
+<p>
+<?=e(setting('about','Animo Label menyediakan berbagai pilihan label dan sticker untuk kebutuhan operasional, barcode, pengiriman, retail, garment, produk dan branding.'))?>
+</p>
+<p>Kami tidak menampilkan layanan packaging atau hangtag. Fokus katalog diarahkan pada produk label dan sticker.</p>
+<a class="btn btn-dark" href="produk.php">Jelajahi Produk</a>
+</div>
+</section>
+<section class="premium-marketplace">
+<div>
+<small>MARKETPLACE</small>
+<h2>Belanja ANIMO LABEL secara online.</h2>
+<p>Temukan produk dan pilihan ukuran melalui marketplace kami.</p>
+</div>
+<div class="premium-marketplace-links">
+<a href="<?=e($shopee)?>" target="_blank">
+<img src="assets/shopee-logo-uploaded.svg" alt="Shopee">
+<span>
+<b>Shopee</b>
+<small>Buka toko ANIMO LABEL →</small>
+</span>
+</a>
+<a href="<?=e($tokopedia)?>" target="_blank">
+<img src="assets/tokopedia-logo-uploaded.svg" alt="Tokopedia">
+<span>
+<b>Tokopedia</b>
+<small>Buka toko ANIMO LABEL →</small>
+</span>
+</a>
+</div>
+</section>
+<section class="premium-cta" id="kontak">
+<div>
+<small>KONSULTASI PRODUK</small>
+<h2>Belum yakin memilih ukuran atau jenis label?</h2>
+<p>Kirim kebutuhan Anda. Kami bantu memilih produk yang sesuai.</p>
+</div>
+<footer class="animo-footer animo-footer-recommended">
+<div class="footer-benefits">
+<div>
+<strong>Hasil Berkualitas</strong>
+</div>
+<div>
+<strong>Harga Terjangkau</strong>
+</div>
+<div>
+<strong>Bisa order dalam Jumlah banyak</strong>
+</div>
+</div>
+<div class="footer-company">
+<div class="footer-company-left">
+<a href="./" class="animo-footer-logo">
+<img src="<?=e($logo?:'assets/logo-animo-label.png')?>" alt="<?=e($siteName)?>">
+</a>
+<p>Solusi label dan sticker untuk kebutuhan bisnis Anda.</p>
+<h2>Informasi Perusahaan</h2>
+<h3>Nama Perusahaan</h3>
+<p class="footer-company-value">PT. Animo Label Sentosa</p>
+<h3>Alamat</h3>
+<div class="footer-address-row">
+<p class="footer-company-value">Jl. R.E. Martadinata, Ruko Permata Ancol Blok E No.3,<br>Pademangan Barat, Kecamatan Pademangan, Kota<br>Administrasi Jakarta Utara, DKI Jakarta</p>
+<a class="footer-map-pin" href="https://maps.app.goo.gl/sMxZM1UQYcbumWow9" target="_blank" rel="noopener" aria-label="Lihat lokasi ANIMO LABEL di Google Maps">
+<span class="map-pin-shape">
+<span>
+</span>
+</span>
+</a>
+</div>
+</div>
+</div>
+<div class="animo-footer-bottom">
+<span>© <?=date('Y')?>
+<?=e($siteName)?>. All Rights Reserved.</span>
+</div>
 </footer>
-<a class="wa-float premium-wa" href="<?=e($wa)?>" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="assets/whatsapp-icon.webp" alt="WhatsApp"><span class="wa-tooltip">Konsultasi via WhatsApp</span></a><script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script><script src="assets/js/home-premium.js?v=20260930"></script></body></html>
+<a class="wa-float premium-wa" href="<?=e($wa)?>" target="_blank" rel="noopener" aria-label="WhatsApp">
+<img src="assets/whatsapp-icon.webp" alt="WhatsApp">
+<span class="wa-tooltip">Konsultasi via WhatsApp</span>
+</a>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js">
+</script>
+<script src="assets/js/home-premium.js?v=20260930">
+</script>
+</body>
+</html>
