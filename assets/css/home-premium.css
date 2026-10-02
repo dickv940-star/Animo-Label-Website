@@ -3324,3 +3324,15 @@ max-height:48px!important;
     border-bottom:0!important;
   }
 }
+
+
+/* FINAL QUICK BENEFITS TEXT: hitam tegas agar terbaca */
+.quick-benefits strong {
+  color:#111!important;
+  font-weight:900!important;
+  text-shadow:0 0 .01px #111!important;
+}
+.quick-benefits span {
+  color:#111!important;
+  font-weight:600!important;
+}
