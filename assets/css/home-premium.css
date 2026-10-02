@@ -2805,3 +2805,60 @@ width:185px!important;
 max-height:48px!important;
 }
 }
+
+
+/* FIX: label WhatsApp mengembang tetap satu pill dan teks berada di dalamnya */
+.premium-wa.wa-float {
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+  gap:0!important;
+  padding:0!important;
+}
+.premium-wa.wa-float img {
+  flex:0 0 58px!important;
+  width:58px!important;
+  height:58px!important;
+  margin:0!important;
+}
+.premium-wa.wa-float .wa-tooltip {
+  position:static!important;
+  display:block!important;
+  flex:1 1 auto!important;
+  min-width:0!important;
+  max-width:100%!important;
+  padding:0 13px 0 4px!important;
+  margin:0!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  text-align:center!important;
+  line-height:1.25!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  transform:none!important;
+  transition:opacity .22s ease!important;
+}
+.premium-wa.wa-float:hover,
+.premium-wa.wa-float:focus-visible {
+  width:260px!important;
+  max-width:calc(100vw - 24px)!important;
+  border-radius:999px!important;
+  overflow:hidden!important;
+}
+.premium-wa.wa-float:hover .wa-tooltip,
+.premium-wa.wa-float:focus-visible .wa-tooltip {
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+}
+@media(max-width:900px) {
+  .premium-wa.wa-float img {
+    flex-basis:54px!important;
+    width:54px!important;
+    height:54px!important;
+  }
+  .premium-wa.wa-float:hover,
+  .premium-wa.wa-float:focus-visible {
+    width:250px!important;
+    max-width:calc(100vw - 24px)!important;
+  }
+}
