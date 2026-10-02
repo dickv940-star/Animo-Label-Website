@@ -3217,3 +3217,13 @@ max-height:48px!important;
   font-weight:900!important;
   letter-spacing:.08em!important;
 }
+
+
+/* FINAL CATEGORY STRIP: hijau brand #85cb05 */
+.category-strip a {
+  color:#85cb05!important;
+}
+.category-strip a:hover,
+.category-strip a:focus-visible {
+  color:#85cb05!important;
+}
