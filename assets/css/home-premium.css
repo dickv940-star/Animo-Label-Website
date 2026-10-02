@@ -3227,3 +3227,20 @@ max-height:48px!important;
 .category-strip a:focus-visible {
   color:#85cb05!important;
 }
+
+
+/* FINAL CATEGORY STRIP: background hijau #85CB05, teks hitam */
+.category-strip a {
+  color:#000!important;
+  background:#85CB05!important;
+  padding:8px 14px!important;
+  border-radius:999px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  line-height:1!important;
+}
+.category-strip a:hover,
+.category-strip a:focus-visible {
+  color:#000!important;
+  background:#85CB05!important;
+}
