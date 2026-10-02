@@ -3597,3 +3597,20 @@ max-height:48px!important;
   opacity:1!important;
   text-shadow:0 0 .4px #0b2a1d!important;
 }
+
+
+/* FINAL SECTION LABELS — semua heading kecil dibuat tebal, solid, dan jelas */
+.premium-section-head small,
+.premium-info-copy > small,
+.premium-marketplace > div:first-child > small {
+  display:inline-block!important;
+  font-family:Arial,Helvetica,sans-serif!important;
+  font-size:15px!important;
+  font-weight:900!important;
+  letter-spacing:.10em!important;
+  color:#0b2a1d!important;
+  opacity:1!important;
+  visibility:visible!important;
+  -webkit-text-fill-color:#0b2a1d!important;
+  text-shadow:0 0 .5px #0b2a1d!important;
+}
