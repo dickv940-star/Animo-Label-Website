@@ -3035,3 +3035,42 @@ max-height:48px!important;
     font-size:12px!important;
   }
 }
+
+
+/* FINAL FOOTER POSITION: Marketplace & WhatsApp on the right */
+.animo-footer-recommended .footer-main {
+  grid-template-columns:minmax(300px,.85fr) minmax(420px,1.15fr)!important;
+  align-items:start!important;
+}
+.animo-footer-recommended .footer-company-card {
+  min-width:0!important;
+}
+.animo-footer-recommended .footer-info-card {
+  grid-column:1!important;
+}
+.animo-footer-recommended .footer-marketplace,
+.animo-footer-recommended .footer-Whatsapp {
+  grid-column:2!important;
+  margin-left:0!important;
+  max-width:none!important;
+}
+.animo-footer-recommended .footer-marketplace {
+  margin-top:0!important;
+  padding-top:0!important;
+  border-top:0!important;
+}
+.animo-footer-recommended .footer-Whatsapp {
+  margin-top:28px!important;
+  padding-top:20px!important;
+  border-top:1px solid rgba(255,255,255,.13)!important;
+}
+@media(max-width:900px) {
+  .animo-footer-recommended .footer-main {
+    grid-template-columns:1fr!important;
+  }
+  .animo-footer-recommended .footer-info-card,
+  .animo-footer-recommended .footer-marketplace,
+  .animo-footer-recommended .footer-Whatsapp {
+    grid-column:auto!important;
+  }
+}
