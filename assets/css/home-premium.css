@@ -3490,3 +3490,44 @@ max-height:48px!important;
     margin-left:0!important;
   }
 }
+
+
+/* HEADER POSITION FIX: desktop order is Logo -> flexible space -> Search -> Beranda -> Produk -> Tentang -> Artikel -> Konsultasi */
+@media(min-width:851px){
+  .premium-header{
+    display:flex!important;
+    align-items:center!important;
+    gap:24px!important;
+  }
+  .premium-header .brand{
+    order:1!important;
+    flex:0 0 auto!important;
+    margin-right:0!important;
+  }
+  .premium-header .premium-search{
+    order:2!important;
+    flex:0 1 min(430px,30vw)!important;
+    width:min(430px,30vw)!important;
+    margin-left:auto!important;
+    margin-right:0!important;
+  }
+  .premium-header .premium-nav{
+    order:3!important;
+    flex:0 0 auto!important;
+    margin-left:0!important;
+    gap:20px!important;
+  }
+  .premium-header .nav-cta{
+    order:4!important;
+    flex:0 0 auto!important;
+  }
+  .premium-header .mobile-menu-btn{
+    order:5!important;
+  }
+}
+@media(max-width:850px){
+  .premium-header .brand{order:1!important;}
+  .premium-header .mobile-menu-btn{order:2!important;}
+  .premium-header .premium-search{order:3!important;}
+  .premium-header .premium-nav{order:4!important;}
+}
