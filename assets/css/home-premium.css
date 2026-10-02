@@ -3272,3 +3272,9 @@ max-height:48px!important;
     font-size:13px!important;
   }
 }
+
+
+/* FINAL CATEGORY BAR TYPOGRAPHY: normal, tidak tebal */
+.category-strip a {
+  font-weight:500!important;
+}
