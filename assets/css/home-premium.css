@@ -3619,3 +3619,36 @@ max-height:48px!important;
   -webkit-text-fill-color:#0b2a1d!important;
   text-shadow:0 0 .5px #0b2a1d!important;
 }
+
+
+/* Footer WhatsApp — use the uploaded WhatsApp logo, not text logo */
+.footer-whatsapp-logos {
+  margin-top: 12px;
+}
+.footer-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+.footer-whatsapp-icon {
+  width: 52px;
+  height: 52px;
+  display: block;
+  object-fit: contain;
+  flex: 0 0 52px;
+}
+.footer-whatsapp:hover .footer-whatsapp-icon {
+  transform: scale(1.08);
+}
+.footer-whatsapp-icon {
+  transition: transform .2s ease;
+}
+@media(max-width:560px) {
+  .footer-whatsapp-icon {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+  }
+}
