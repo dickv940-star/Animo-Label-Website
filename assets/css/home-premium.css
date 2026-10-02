@@ -2391,13 +2391,18 @@ text-decoration:none!important;
 .animo-footer-recommended .footer-whatsapp-dot {
 display:grid!important;
 place-items:center!important;
-width:34px!important;
-height:34px!important;
+width:38px!important;
+height:38px!important;
+flex:0 0 38px!important;
 border-radius:50%!important;
 background:#25D366!important;
-color:#fff!important;
-font-size:10px!important;
-font-weight:800!important;
+overflow:hidden!important;
+}
+.animo-footer-recommended .footer-whatsapp-dot img {
+width:38px!important;
+height:38px!important;
+padding:7px!important;
+object-fit:contain!important;
 }
 
 .animo-footer-recommended .footer-whatsapp small {
