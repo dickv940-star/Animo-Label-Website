@@ -58,7 +58,7 @@ const ANIMO_CATALOG=[
 {id:18,cat:"Label Thermal",name:"LABEL THERMAL 33 X 15 MM — WARNA 3 LINE",desc:"Label thermal warna 33 × 15 mm, 3 line.",price:"Rp25.000–Rp93.000",img:"assets/produk/label thermal warna 3 line 33x15mm.jpg",url:"https://shopee.co.id/LABEL-THERMAL-33-X-15-Label-Barcode-Direct-Thermal-33x15-mm-Stiker-Thermal-33x15-2-Line-3-lINE-isi-10.000-pcs-i.708541841.27400984071"},
 {id:19,cat:"Label Thermal",name:"LABEL THERMAL / PRODUK LABEL THERMAL",desc:"Foto produk label thermal untuk katalog.",price:"",img:"assets/produk/produk-label-thermal-01 (7).jpg",url:""},
 {id:20,cat:"Ribbon",name:"RIBBON BARCODE FULL RESIN 110 X 300 M",desc:"Ribbon barcode full resin 110 × 300 meter.",price:"",img:"assets/produk/ribbon barcode full resin 110x300.jpg",url:""},
-{id:21,cat:"Stiker Panah",name:"STIKER PANAH 1 CM",desc:"Stiker panah 1 cm untuk penandaan.",price:"",img:"assets/produk/stiker panah 1cm.jpg",url:"}];
+{id:21,cat:"Stiker Panah",name:"STIKER PANAH 1 CM",desc:"Stiker panah 1 cm untuk penandaan.",price:"",img:"assets/produk/stiker panah 1cm.jpg",url:""}];
 
 /* =========================================================
    JANGAN UBAH BAGIAN DI BAWAH INI KECUALI ANDA MEMAHAMI JAVASCRIPT
