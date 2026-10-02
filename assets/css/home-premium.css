@@ -3652,3 +3652,39 @@ max-height:48px!important;
     flex-basis: 48px;
   }
 }
+
+/* FINAL FIX: footer WhatsApp is icon-only, round like the WhatsApp button */
+.footer-whatsapp-icon-only {
+  width:56px!important;
+  height:56px!important;
+  padding:0!important;
+  margin:10px 0 0!important;
+  border:0!important;
+  border-radius:50%!important;
+  background:#25D366!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+  box-shadow:0 6px 18px rgba(0,0,0,.18)!important;
+}
+.footer-whatsapp-icon-only .footer-whatsapp-icon {
+  width:56px!important;
+  height:56px!important;
+  flex:0 0 56px!important;
+  display:block!important;
+  border-radius:50%!important;
+  object-fit:cover!important;
+  transition:transform .2s ease!important;
+}
+.footer-whatsapp-icon-only:hover .footer-whatsapp-icon {
+  transform:scale(1.08)!important;
+}
+@media(max-width:560px){
+  .footer-whatsapp-icon-only,
+  .footer-whatsapp-icon-only .footer-whatsapp-icon {
+    width:50px!important;
+    height:50px!important;
+    flex-basis:50px!important;
+  }
+}
