@@ -3342,7 +3342,7 @@ max-height:48px!important;
 }
 
 
-/* FINAL TYPOGRAPHY: category bar & quick benefits */
+/* FINAL TYPOGRAPHY ONLY */
 .category-strip a {
   font-family:"Times New Roman",Times,serif!important;
   font-size:16px!important;
@@ -3351,10 +3351,7 @@ max-height:48px!important;
   text-shadow:0 0 .15px #000!important;
 }
 .category-strip a:hover,
-.category-strip a:focus-visible {
-  color:#000!important;
-  background:transparent!important;
-}
+.category-strip a:focus-visible { color:#000!important; background:transparent!important; }
 .quick-benefits strong {
   font-family:"Times New Roman",Times,serif!important;
   color:#000!important;
