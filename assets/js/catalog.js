@@ -65,19 +65,37 @@ const ANIMO_CATALOG=[
 ========================================================= */
 window.ANIMO_CATALOG=ANIMO_CATALOG;
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
+function productCardHtml(p,index){
+ const image=p.img
+  ? '<img src="'+p.img+'" alt="'+escapeHtml(p.name)+'" loading="'+(index<4?"eager":"lazy")+'" decoding="async" fetchpriority="'+(index<2?"high":"auto")+'" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'assets/img-placeholder.svg\'">'
+  : '<div class="product-image-placeholder" aria-label="Foto produk belum diisi">Foto produk belum diisi</div>';
+ const price=p.price||"Harga belum diisi";
+ const shopee=p.url
+  ? '<a class="text-link" href="'+p.url+'" target="_blank" rel="noopener">Shopee →</a>'
+  : '<span class="text-link product-link-pending">Link Shopee belum diisi</span>';
+ return '<article class="product-card catalog-product-card"><a class="product-image" href="produk-detail.html?id='+p.id+'">'+image+'</a><div class="product-info"><small>'+escapeHtml(p.cat)+'</small><h3>'+escapeHtml(p.name)+'</h3><p>'+escapeHtml(p.desc)+'</p><strong>'+escapeHtml(price)+'</strong><div class="product-card-actions"><a class="text-link" href="produk-detail.html?id='+p.id+'">Detail produk →</a>'+shopee+'</div></div></article>';
+}
 function renderCatalog(target,filter="",query=""){
  const q=query.trim().toLowerCase();
  const list=ANIMO_CATALOG.filter(p=>(filter==="Semua"||!filter||p.cat===filter)&&(!q||[p.name,p.cat,p.desc].join(" ").toLowerCase().includes(q)));
- target.innerHTML=list.map(p=>{
-  const image=p.img
-   ? '<img src="'+p.img+'" alt="'+escapeHtml(p.name)+'" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'assets/img-placeholder.svg\'">'
-   : '<div class="product-image-placeholder" aria-label="Foto produk belum diisi">Foto produk belum diisi</div>';
-  const price=p.price||"Harga belum diisi";
-  const shopee=p.url
-   ? '<a class="text-link" href="'+p.url+'" target="_blank" rel="noopener">Shopee →</a>'
-   : '<span class="text-link product-link-pending">Link Shopee belum diisi</span>';
-  return '<article class="product-card catalog-product-card"><a class="product-image" href="produk-detail.html?id='+p.id+'">'+image+'</a><div class="product-info"><small>'+escapeHtml(p.cat)+'</small><h3>'+escapeHtml(p.name)+'</h3><p>'+escapeHtml(p.desc)+'</p><strong>'+escapeHtml(price)+'</strong><div class="product-card-actions"><a class="text-link" href="produk-detail.html?id='+p.id+'">Detail produk →</a>'+shopee+'</div></div></article>';
- }).join("")||'<div class="empty-state"><h3>Produk tidak ditemukan</h3><p>Coba kata kunci atau kategori lainnya.</p></div>';
+ if(!list.length){
+  target.innerHTML='<div class="empty-state"><h3>Produk tidak ditemukan</h3><p>Coba kata kunci atau kategori lainnya.</p></div>';
+ }else{
+  const first=list.slice(0,8),rest=list.slice(8);
+  target.innerHTML=first.map((p,i)=>productCardHtml(p,i)).join("");
+  let offset=8;
+  const appendChunk=()=>{
+   if(offset>=list.length)return;
+   const chunk=list.slice(offset,offset+6);
+   target.insertAdjacentHTML("beforeend",chunk.map((p,i)=>productCardHtml(p,offset+i)).join(""));
+   offset+=chunk.length;
+   if(offset<list.length)requestIdleCallback(appendChunk,{timeout:900});
+  };
+  if(rest.length){
+   if("requestIdleCallback" in window) requestIdleCallback(appendChunk,{timeout:700});
+   else setTimeout(appendChunk,350);
+  }
+ }
  const count=target.closest(".catalog-shell")?.querySelector("[data-catalog-count]");if(count)count.textContent=list.length+" produk";
 }
 document.addEventListener("DOMContentLoaded",()=>{
