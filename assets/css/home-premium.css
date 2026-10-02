@@ -2998,3 +2998,40 @@ max-height:48px!important;
     padding-right:10px!important;
   }
 }
+
+
+/* FINAL WhatsApp text refinement: larger but always contained */
+.premium-wa.wa-float {
+  width:280px!important;
+  max-width:calc(100vw - 24px)!important;
+  padding:0!important;
+}
+.premium-wa.wa-float .wa-tooltip {
+  flex:1 1 auto!important;
+  min-width:0!important;
+  max-width:calc(100% - 58px)!important;
+  padding:0 10px 0 5px!important;
+  overflow:hidden!important;
+  white-space:nowrap!important;
+  text-overflow:ellipsis!important;
+  font-size:13px!important;
+  line-height:1.2!important;
+  font-weight:800!important;
+  text-align:center!important;
+}
+@media(max-width:900px) {
+  .premium-wa.wa-float {
+    width:270px!important;
+    max-width:calc(100vw - 24px)!important;
+  }
+}
+@media(max-width:430px) {
+  .premium-wa.wa-float {
+    width:calc(100vw - 24px)!important;
+  }
+  .premium-wa.wa-float .wa-tooltip {
+    max-width:calc(100% - 58px)!important;
+    padding-right:7px!important;
+    font-size:12px!important;
+  }
+}
