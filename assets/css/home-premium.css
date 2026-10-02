@@ -3278,3 +3278,49 @@ max-height:48px!important;
 .category-strip a {
   font-weight:500!important;
 }
+
+
+/* FINAL QUICK BENEFITS: full-width green strip directly below banner */
+.quick-benefits {
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  background:#85CB05!important;
+  color:#fff!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+}
+.quick-benefits div {
+  padding:24px 5%!important;
+  border-right:1px solid rgba(255,255,255,.25)!important;
+  border-bottom:0!important;
+  background:#85CB05!important;
+}
+.quick-benefits div:last-child {
+  border-right:0!important;
+}
+.quick-benefits strong {
+  color:#fff!important;
+  font-size:15px!important;
+  font-weight:800!important;
+}
+.quick-benefits span {
+  color:rgba(255,255,255,.95)!important;
+  font-size:13px!important;
+  margin-top:5px!important;
+}
+@media(max-width:850px) {
+  .quick-benefits {
+    grid-template-columns:1fr!important;
+  }
+  .quick-benefits div {
+    padding:18px 6%!important;
+    border-right:0!important;
+    border-bottom:1px solid rgba(255,255,255,.25)!important;
+  }
+  .quick-benefits div:last-child {
+    border-bottom:0!important;
+  }
+}
