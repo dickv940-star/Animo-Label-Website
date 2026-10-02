@@ -1,21 +1,52 @@
-/* FINAL CATEGORY STRIP TYPOGRAPHY: lebih jelas, sedikit lebih besar */
+/* FINAL CATEGORY STRIP: hijau full dari ujung ke ujung, bukan label/pill */
+.category-strip {
+  width:100%!important;
+  background:#85CB05!important;
+  border-bottom:0!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+}
+.category-strip-inner {
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0 5%!important;
+  min-height:50px!important;
+  height:50px!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:28px!important;
+  background:#85CB05!important;
+  box-sizing:border-box!important;
+}
 .category-strip a {
   color:#111!important;
+  background:transparent!important;
+  border-radius:0!important;
+  padding:0!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  height:100%!important;
   font-family:Inter,Arial,sans-serif!important;
   font-size:13.5px!important;
   font-weight:900!important;
   letter-spacing:.01em!important;
-  text-shadow:0 0 .01px #111!important;
-  padding:9px 15px!important;
+  white-space:nowrap!important;
+  text-decoration:none!important;
 }
 .category-strip a:hover,
 .category-strip a:focus-visible {
-  color:#111!important;
-  background:#85CB05!important;
+  color:#000!important;
+  background:transparent!important;
 }
 @media(max-width:700px) {
+  .category-strip-inner {
+    padding:0 4%!important;
+    gap:22px!important;
+    min-height:48px!important;
+    height:48px!important;
+  }
   .category-strip a {
     font-size:13px!important;
-    padding:9px 14px!important;
   }
 }
