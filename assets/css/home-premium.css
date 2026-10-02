@@ -3372,3 +3372,24 @@ max-height:48px!important;
   .quick-benefits strong { font-size:20px!important; }
   .quick-benefits span { font-size:16px!important; }
 }
+
+/* FINAL GREEN + WHITE TEXT — category bar & Quick Benefits */
+.category-strip,
+.category-strip-inner {
+  background:#0b2a1d!important;
+}
+.category-strip a,
+.category-strip a:hover,
+.category-strip a:focus-visible {
+  color:#fff!important;
+  text-shadow:0 0 .2px #fff!important;
+}
+.quick-benefits,
+.quick-benefits div {
+  background:#0b2a1d!important;
+}
+.quick-benefits strong,
+.quick-benefits span {
+  color:#fff!important;
+  text-shadow:0 0 .2px #fff!important;
+}
