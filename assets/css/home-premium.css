@@ -3209,3 +3209,11 @@ max-height:48px!important;
 .animo-footer-recommended .footer-company-card > .footer-Whatsapp .footer-whatsapp {
   margin-top:0!important;
 }
+
+
+/* FINAL SECTION LABELS: lebih tebal */
+.premium-section-head small,
+.premium-marketplace > div:first-child > small {
+  font-weight:900!important;
+  letter-spacing:.08em!important;
+}
