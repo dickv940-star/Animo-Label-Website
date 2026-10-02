@@ -3393,3 +3393,52 @@ max-height:48px!important;
   color:#fff!important;
   text-shadow:0 0 .2px #fff!important;
 }
+
+/* FINAL HEADER COLOR — green edge-to-edge, black text, logo preserved */
+.premium-header {
+  background:#0b5f0a!important;
+  background-color:#0b5f0a!important;
+}
+.premium-header .brand,
+.premium-header .premium-nav,
+.premium-header .premium-nav a,
+.premium-header .nav-cta,
+.premium-header .mobile-menu-btn {
+  color:#000!important;
+}
+.premium-header .premium-nav a:hover,
+.premium-header .premium-nav a:focus-visible,
+.premium-header .premium-nav a.active {
+  color:#000!important;
+}
+.premium-header .site-logo {
+  background:#fff!important;
+  object-fit:contain!important;
+}
+.premium-header .brand {
+  background:#fff!important;
+  border-radius:6px!important;
+  overflow:hidden!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.premium-header .premium-search {
+  background:#fff!important;
+  border-color:rgba(0,0,0,.18)!important;
+}
+.premium-header .premium-search input,
+.premium-header .premium-search input::placeholder,
+.premium-header .header-search-clear,
+.premium-header .header-search-submit {
+  color:#000!important;
+}
+.premium-header .header-search-submit {
+  background:#fff!important;
+  border:1px solid rgba(0,0,0,.18)!important;
+}
+@media(max-width:850px) {
+  .premium-header .premium-nav {
+    background:#0b5f0a!important;
+  }
+}
