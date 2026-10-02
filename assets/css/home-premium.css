@@ -3653,31 +3653,32 @@ max-height:48px!important;
   }
 }
 
-/* FINAL FIX: footer WhatsApp — clean round icon for "Hubungi Kami" */
+/* FINAL FIX: footer WhatsApp — tampilkan logo asli tanpa label/background tambahan */
 .footer-whatsapp-icon-only {
   width:58px!important;
   height:58px!important;
   padding:0!important;
   margin:12px 0 0!important;
   border:0!important;
-  border-radius:50%!important;
-  background:#25D366!important;
-  display:flex!important;
+  border-radius:0!important;
+  background:transparent!important;
+  display:inline-flex!important;
   align-items:center!important;
   justify-content:center!important;
-  overflow:hidden!important;
-  box-shadow:0 5px 16px rgba(0,0,0,.18)!important;
+  overflow:visible!important;
+  box-shadow:none!important;
   line-height:0!important;
 }
 .footer-whatsapp-icon-only .footer-whatsapp-icon {
-  width:100%!important;
-  height:100%!important;
+  width:58px!important;
+  height:58px!important;
   margin:0!important;
   padding:0!important;
   display:block!important;
-  flex:0 0 100%!important;
-  border-radius:50%!important;
-  object-fit:cover!important;
+  flex:0 0 58px!important;
+  border-radius:0!important;
+  object-fit:contain!important;
+  background:transparent!important;
 }
 .footer-whatsapp-icon-only:hover {
   transform:translateY(-2px)!important;
