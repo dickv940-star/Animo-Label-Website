@@ -50,3 +50,56 @@
     font-size:13px!important;
   }
 }
+
+
+/* FINAL CATEGORY STRIP: background hijau full, layout elemen lain tetap seperti semula */
+.category-strip {
+  background:#85CB05!important;
+  border-bottom:0!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+}
+.category-strip-inner {
+  max-width:1500px!important;
+  margin:auto!important;
+  padding:0 5%!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:28px!important;
+  white-space:nowrap!important;
+  height:47px!important;
+  background:transparent!important;
+  box-sizing:border-box!important;
+}
+.category-strip a {
+  color:#111!important;
+  background:transparent!important;
+  border-radius:0!important;
+  padding:0!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  height:auto!important;
+  font-family:Inter,Arial,sans-serif!important;
+  font-size:13.5px!important;
+  font-weight:900!important;
+  letter-spacing:.01em!important;
+  white-space:nowrap!important;
+  text-decoration:none!important;
+}
+.category-strip a:hover,
+.category-strip a:focus-visible {
+  color:#000!important;
+  background:transparent!important;
+}
+@media(max-width:850px) {
+  .category-strip-inner {
+    padding:0 4%!important;
+    gap:22px!important;
+    height:47px!important;
+  }
+}
+@media(max-width:700px) {
+  .category-strip a {
+    font-size:13px!important;
+  }
+}
