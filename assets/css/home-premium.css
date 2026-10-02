@@ -3341,14 +3341,13 @@ max-height:48px!important;
   font-weight:700!important;
 }
 
-
-/* FINAL TYPOGRAPHY ONLY */
+/* FINAL READABILITY FIX — kategori atas banner & Quick Benefits */
 .category-strip a {
   font-family:"Times New Roman",Times,serif!important;
   font-size:16px!important;
   font-weight:700!important;
   color:#000!important;
-  text-shadow:0 0 .15px #000!important;
+  text-shadow:0 0 .2px #000!important;
 }
 .category-strip a:hover,
 .category-strip a:focus-visible { color:#000!important; background:transparent!important; }
@@ -3358,7 +3357,7 @@ max-height:48px!important;
   font-size:20px!important;
   font-weight:700!important;
   line-height:1.2!important;
-  text-shadow:0 0 .15px #000!important;
+  text-shadow:0 0 .2px #000!important;
 }
 .quick-benefits span {
   font-family:"Times New Roman",Times,serif!important;
@@ -3366,7 +3365,7 @@ max-height:48px!important;
   font-size:16px!important;
   font-weight:700!important;
   line-height:1.35!important;
-  text-shadow:0 0 .15px #000!important;
+  text-shadow:0 0 .2px #000!important;
 }
 @media(max-width:700px) {
   .category-strip a { font-size:16px!important; }
