@@ -119,9 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    hideTextWhenBannerAlreadyContainsText(
-      slides[currentSlide]
-    );
+    /* Teks banner dikendalikan langsung oleh HTML/CSS. Hindari pemanggilan fungsi yang tidak didefinisikan. */
   }
 
   function goToSlide(index) {
