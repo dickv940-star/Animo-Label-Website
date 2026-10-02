@@ -3326,6 +3326,25 @@ max-height:48px!important;
 }
 
 
+
+/* FINAL CATEGORY BAR TYPOGRAPHY: Times New Roman 14px bold */
+.category-strip a {
+  font-family:"Times New Roman",Times,serif!important;
+  font-size:14px!important;
+  font-weight:700!important;
+  color:#111!important;
+}
+.category-strip a:hover,
+.category-strip a:focus-visible {
+  color:#000!important;
+  background:transparent!important;
+}
+@media(max-width:700px) {
+  .category-strip a {
+    font-size:14px!important;
+  }
+}
+
 /* FINAL QUICK BENEFITS TEXT: Times New Roman, judul 16px bold, isi 13px bold */
 .quick-benefits strong {
   font-family:"Times New Roman",Times,serif!important;
