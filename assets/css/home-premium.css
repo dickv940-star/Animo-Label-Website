@@ -3191,3 +3191,21 @@ max-height:48px!important;
     max-height:48px!important;
   }
 }
+
+
+/* FINAL FOOTER WHATSAPP: rapat seperti Marketplace */
+.animo-footer-recommended .footer-company-card > .footer-Whatsapp {
+  margin-top:0!important;
+  padding-top:0!important;
+  border-top:0!important;
+}
+.animo-footer-recommended .footer-company-card > .footer-Whatsapp .footer-marketplace-title {
+  margin:0 0 12px!important;
+}
+.animo-footer-recommended .footer-company-card > .footer-Whatsapp .footer-whatsapp-logos {
+  margin-top:0!important;
+  padding-top:0!important;
+}
+.animo-footer-recommended .footer-company-card > .footer-Whatsapp .footer-whatsapp {
+  margin-top:0!important;
+}
